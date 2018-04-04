@@ -52,7 +52,39 @@ public class NewMain1 {
         //System.out.println(a.getLstProductos());
         //a.delete(a.getLstProductos().get(0),a.getLstCategorias().get(0));
         //System.out.println(a.getLstProductos());
-    }
+    }   
     */
+       Usuario cliente1 = new Cliente ();
+        cliente1.setCedula("12345678");
+        cliente1.setNombre("Mateo Marin");
+        cliente1.setTelefono("84863651");
+        cliente1.setContraseña("vaca94");
+       
+                
+        Usuario cliente2 = new Cliente ();
+        cliente2.setCedula("117580729");
+        cliente2.setNombre("Luis Fernandez");
+        cliente2.setTelefono("83730387");
+        cliente2.setContraseña("reloj123");
+        
+        Usuario cliente3 = new Cliente ();
+        cliente3.setCedula("115689435");
+        cliente3.setNombre("Antonio Alvarez");
+        cliente3.setTelefono("88987432");
+        cliente3.setContraseña("gallina23");
+        
+        Usuario administrador1 = new Administrador();
+        administrador1.setNombre("Jaime");
+        administrador1.setCedula("123456789");
+        administrador1.setTelefono("22253625");
+        administrador1.setContraseña("chirulo76");
+        
+        Usuario administrador2 = new Administrador();
+        administrador1.setNombre("Pedro");
+        administrador1.setCedula("987654321");
+        administrador1.setTelefono("88988754");
+        administrador1.setContraseña("pedro123"); 
+        
+        
     }
 }
