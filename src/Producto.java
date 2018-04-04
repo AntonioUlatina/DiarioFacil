@@ -17,6 +17,7 @@ class Producto /*implements Searchable*/{
     private int precio;
     private int stockMin;
     private int stockMax;
+    private boolean foundProducto;
     
     Producto (){}
     Producto(String nombre, String descripcion, int precio,int stockMin,int stockMax){
@@ -86,4 +87,20 @@ class Producto /*implements Searchable*/{
         }
         return tempProduct;
     }
+    
+    public Producto searchProduct(Collection<Producto> lstProductos, String toSearch) throws NullPointerException{
+        System.out.println("El queso " + this.foundProducto);
+        for(Producto producto: lstProductos){
+            if(toSearch.equals((producto.getNombre()))){
+                this.foundProducto = true;
+                System.out.println(toSearch + " se encuentra en la lista.");
+                break;
+            }
+        
+        if(!this.foundProducto){
+            System.out.println(toSearch + " no esta en la lista");
+        }
+    }
+        return null;
+}
 }

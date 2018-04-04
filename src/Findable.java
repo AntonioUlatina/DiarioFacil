@@ -11,7 +11,7 @@ import java.util.Collection;
  *
  * @author Pavilion
  */
-public interface Foundable extends Searchable{
+public interface Findable extends Searchable{
     <T> Boolean found(T searched);
     //To be passed to an Interface called Modifiable
     <T> T modify(T searched, Collection<T> toModify);

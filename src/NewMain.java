@@ -36,7 +36,7 @@ public class NewMain {
             System.out.println(a.getLstCategorias());
         }
         a.addObjects(p1,p2,p3);
-        System.out.println(a.search(a.getLstProductos(), "Queso"));
+        //System.out.println(a.search(a.getLstProductos(), "Queso"));
         System.out.println(a.getLstProductos());
         //a.delete(a.getLstProductos().get(0));
         //System.out.println(a.getLstProductos());

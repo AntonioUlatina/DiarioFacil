@@ -16,12 +16,13 @@ import java.util.List;
  *
  * @author Mateo Marin
  */
-public final class Administrador extends Usuario implements Searchable/*<Searchable>*/{
+public final class Administrador extends Usuario implements Searchable{
     private List<Proveedor> lstProveedores = new ArrayList<>(); 
     private List<Pedido> lstPedidos = new ArrayList<>();
     private List<Producto> lstProductos = new ArrayList<>();
     private List<Categoria> lstCategorias = new ArrayList<>();
-    private Object foundObject;
+    private boolean foundObject;
+    private Producto producto;
     
     public Administrador (){}
     
@@ -84,7 +85,6 @@ public final class Administrador extends Usuario implements Searchable/*<Searcha
                 System.out.println(nuevo + " is not a valid Class; please insert a valid Class");
         }
         Collections.sort(lstProductos, new PriceComparator());
-        System.out.println(lstProductos);
     }
 
 //Might be unnecesary but I'd like to keep it, to understand the interaction between this method and create.
@@ -231,28 +231,53 @@ protected <T> void delete(T... objectToDelete){//El metodo para eliminar un usua
         }
     */
 
-    public Object getFoundObject() {
+    public boolean getFoundObject() {
         return foundObject;
     }
 
-    public void setFoundObject(Object foundObject) {
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
+    }
+
+    public void setFoundObject(boolean foundObject) {
         this.foundObject = foundObject;
     }
     
     public <T> void search(Collection<T> lstObjects, String toSearch) throws NullPointerException{
         for(T object: lstObjects){
-        if(object instanceof Producto && toSearch.equals(((Producto) object).getNombre())){
-            //System.out.println("return of condition " + toSearch.equals(((Producto) object).getNombre()));
-           this.foundObject = "Hay " + ((Producto) object).getNombre() + " disponible.";
-           if(this.foundObject != null){
-                System.out.println(this.foundObject);
-                }
-           else{
-               System.out.println(toSearch + " no esta en la lista");
-           }
-        }
+            if((object instanceof Producto && toSearch.equals(((Producto) object).getNombre()))){
+                this.foundObject = true;
+                this.producto = (Producto) object;
+                System.out.println(toSearch + " se encuentra en la lista.");
+                break;
+            }
+            if((object instanceof Categoria && toSearch.equals(((Categoria) object).getNombre()))){
+                this.foundObject = true;
+                System.out.println(toSearch + " se encuentra en la lista.");
+                break;
+            }
+            if((object instanceof Proveedor && toSearch.equals(((Proveedor) object).getNombre()))){
+                this.foundObject = true;
+                System.out.println(toSearch + " se encuentra en la lista.");
+                break;
+            }
+            if((object instanceof Pedido && toSearch.equals(((Pedido) object).getPedidoId()))){
+                this.foundObject = true;
+                System.out.println(toSearch + " se encuentra en la lista.");
+                break;
             }
         }
+        
+        if(!this.foundObject){
+            System.out.println(toSearch + " no esta en la lista");
+        }
+        this.foundObject = false;
+    }
+}
         /*
         System.out.println("Queso".equals("Qeso"));
         
@@ -279,4 +304,4 @@ protected <T> void delete(T... objectToDelete){//El metodo para eliminar un usua
     
     }
 */
-}
+
