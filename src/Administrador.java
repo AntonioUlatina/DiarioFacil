@@ -247,7 +247,8 @@ protected <T> void delete(T... objectToDelete){//El metodo para eliminar un usua
         this.foundObject = foundObject;
     }
     
-    public <T> void search(Collection<T> lstObjects, String toSearch) throws NullPointerException{
+    public <T> boolean search(Collection<T> lstObjects, String toSearch) throws NullPointerException{
+        try{
         for(T object: lstObjects){
             if((object instanceof Producto && toSearch.equals(((Producto) object).getNombre()))){
                 this.foundObject = true;
@@ -275,7 +276,10 @@ protected <T> void delete(T... objectToDelete){//El metodo para eliminar un usua
         if(!this.foundObject){
             System.out.println(toSearch + " no esta en la lista");
         }
+        return this.foundObject;
+        }finally{
         this.foundObject = false;
+                }
     }
 }
         /*

@@ -1,5 +1,6 @@
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 /*
@@ -54,4 +55,19 @@ class Item {
         return "Item{" + "numeroConsecutivo=" + numeroConsecutivo + ", cantidad=" + cantidad + ", producto=" + producto + '}';
     }
     
+    public Producto searchProduct(Collection<Producto> lstProductos, String toSearch) throws NullPointerException{
+        System.out.println("El queso " + this.foundProducto);
+        for(Producto producto: lstProductos){
+            if(toSearch.equals((producto.getNombre()))){
+                this.foundProducto = true;
+                System.out.println(toSearch + " se encuentra en la lista.");
+                break;
+            }
+        
+        if(!this.foundProducto){
+            System.out.println(toSearch + " no esta en la lista");
+        }
+    }
+        return null;
+}
 }
