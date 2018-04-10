@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/Pavilion/Downloads/Diagrama%20y%20netBeans/Proyecto/src/Categoria.java</file>
             <file>file:/C:/Users/Pavilion/Downloads/Diagrama%20y%20netBeans/Proyecto/src/TesterMenu.java</file>
             <file>file:/C:/Users/Pavilion/Downloads/Diagrama%20y%20netBeans/Proyecto/src/PriceComparator.java</file>
@@ -19,6 +20,21 @@
             <file>file:/C:/Users/Pavilion/Downloads/Diagrama%20y%20netBeans/Proyecto/src/Proveedor.java</file>
             <file>file:/C:/Users/Pavilion/Downloads/Diagrama%20y%20netBeans/Proyecto/src/Orden.java</file>
             <file>file:/C:/Users/Pavilion/Downloads/Diagrama%20y%20netBeans/Proyecto/src/Findable.java</file>
+=======
+            <file>file:/C:/Users/Mateo%20Marin/Documents/NetBeansProjects/DiarioFacil/src/Carrito.java</file>
+            <file>file:/C:/Users/Mateo%20Marin/Documents/NetBeansProjects/DiarioFacil/src/Findable.java</file>
+            <file>file:/C:/Users/Mateo%20Marin/Documents/NetBeansProjects/DiarioFacil/src/Orden.java</file>
+            <file>file:/C:/Users/Mateo%20Marin/Documents/NetBeansProjects/DiarioFacil/src/DiarioFacil.java</file>
+            <file>file:/C:/Users/Mateo%20Marin/Documents/NetBeansProjects/DiarioFacil/src/NewMain1.java</file>
+            <file>file:/C:/Users/Mateo%20Marin/Documents/NetBeansProjects/DiarioFacil/src/NewMain.java</file>
+            <file>file:/C:/Users/Mateo%20Marin/Documents/NetBeansProjects/DiarioFacil/src/Searchable.java</file>
+            <file>file:/C:/Users/Mateo%20Marin/Documents/NetBeansProjects/DiarioFacil/src/Cliente.java</file>
+            <file>file:/C:/Users/Mateo%20Marin/Documents/NetBeansProjects/DiarioFacil/src/TesterMenu.java</file>
+            <file>file:/C:/Users/Mateo%20Marin/Documents/NetBeansProjects/DiarioFacil/src/Promocion.java</file>
+            <file>file:/C:/Users/Mateo%20Marin/Documents/NetBeansProjects/DiarioFacil/src/PriceComparator.java</file>
+            <file>file:/C:/Users/Mateo%20Marin/Documents/NetBeansProjects/DiarioFacil/src/Administrador.java</file>
+            <file>file:/C:/Users/Mateo%20Marin/Documents/NetBeansProjects/DiarioFacil/src/Categoria.java</file>
+>>>>>>> 32b2035eadd1322ea83521cb15b3f3afb8c128a1
         </group>
     </open-files>
 </project-private>

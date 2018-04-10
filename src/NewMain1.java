@@ -60,6 +60,7 @@ public class NewMain1 {
         cliente1.setNombre("Mateo Marin");
         cliente1.setTelefono("84863651");
         cliente1.setContraseña("vaca94");
+        
        
                 
         Usuario cliente2 = new Cliente ();
