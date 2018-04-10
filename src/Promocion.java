@@ -20,6 +20,15 @@ class Promocion {
     private Period periodoOferta;
     private int descuento;
     private int precioPromo;
+    private String nombre;
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
     
     public Promocion(){}
     

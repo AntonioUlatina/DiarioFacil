@@ -17,14 +17,26 @@ class Item {
     private int numeroConsecutivo;
     private int cantidad;
     private Producto producto;
+    private Combo combo;
+    private Promocion promocion;
     private boolean foundProducto;
+    private boolean foundCombo;
+    private boolean foundPromocion;
     
     public Item(){}
     
-    public Item(int numeroConsecutivo, int cantidad, Producto producto){
+    public <T> Item(int numeroConsecutivo, int cantidad, T item){
         this.numeroConsecutivo = numeroConsecutivo;
         this.cantidad = cantidad;
-        this.producto = producto;
+        if(item instanceof Producto){
+        this.producto = (Producto) item;
+        }
+        if(item instanceof Combo){
+            this.combo = (Combo) item;
+        }
+        if(item instanceof Promocion){
+            this.promocion = (Promocion) item;
+        }
     }
 
     public int getNumeroConsecutivo() {
@@ -66,6 +78,38 @@ class Item {
             }
         
         if(!this.foundProducto){
+            System.out.println(toSearch + " no esta en la lista");
+        }
+    }
+        return null;
+}
+    
+    public Combo searchProduct(Collection<Combo> lstCombos, String toSearch) throws NullPointerException{
+        System.out.println("El queso " + this.foundCombo);
+        for(Combo combo: lstCombos){
+            if(toSearch.equals((combo.getNombre()))){
+                this.foundCombo = true;
+                System.out.println(toSearch + " se encuentra en la lista.");
+                break;
+            }
+        
+        if(!this.foundCombo){
+            System.out.println(toSearch + " no esta en la lista");
+        }
+    }
+        return null;
+}
+    
+    public Promocion searchPromocion(Collection<Promocion> lstPromociones, String toSearch) throws NullPointerException{
+        System.out.println("El queso " + this.foundProducto);
+        for(Promocion promocion: lstPromociones){
+            if(toSearch.equals((promocion.getNombre()))){
+                this.foundPromocion = true;
+                System.out.println(toSearch + " se encuentra en la lista.");
+                break;
+            }
+        
+        if(!this.foundPromocion){
             System.out.println(toSearch + " no esta en la lista");
         }
     }
