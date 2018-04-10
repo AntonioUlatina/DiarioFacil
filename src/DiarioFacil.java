@@ -124,5 +124,14 @@ public class DiarioFacil {
     public void setLstPedidos(List<Pedido> lstPedidos) {
         this.lstPedidos = lstPedidos;
     }
+
+    @Override
+    public String toString() {
+        String todos = "";
+        for (Usuario lstUsuario : lstUsuarios) {
+            todos.concat(lstUsuario.getNombre());
+        }
+        return "DiarioFacil{" + "nombre=" + nombre + ", lstProductos=" + lstProductos + ", lstCategorias=" + lstCategorias + ", lstPromociones=" + lstPromociones + ", lstCombos=" + lstCombos + ", lstOrdenes=" + lstOrdenes + ", lstUsuarios=" + lstUsuarios + ", lstProveedores=" + lstProveedores + ", lstPedidos=" + lstPedidos + '}';
+    }
     
 }
