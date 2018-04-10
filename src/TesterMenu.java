@@ -65,13 +65,13 @@ public class TesterMenu {
 
         out.println("Diario Facil");
         int opc;
-        boolean noSalir = true;
+        boolean salir;
 
         do {
             mostrarMenu();
             opc = leerOpcion();
-            noSalir = ejecutarAccion(opc);
-        } while (noSalir);
+            salir = ejecutarAccion(opc);
+        } while(!salir);
     }
 
     public static void mostrarMenu() {
@@ -96,7 +96,7 @@ public class TesterMenu {
 
     public static boolean ejecutarAccion(int popcion) throws java.io.IOException {
 
-        boolean noSalir = true;
+        boolean salir = false;
         int numProd = 0;
 
         switch (popcion) {
@@ -113,7 +113,7 @@ public class TesterMenu {
                 break;
             case 3://Salir
                 out.println("Gracias por usar Diario Facil");
-                noSalir = false;
+                salir = true;
                 break;
 
             default: //Cualquier otro valor dado por el usuario se considera inválido
@@ -122,7 +122,7 @@ public class TesterMenu {
                 out.println();
                 break;
         }
-        return noSalir;
+        return salir;
     }
 
     public static void login() throws IOException {
