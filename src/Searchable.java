@@ -15,6 +15,6 @@ import java.util.Collection;
 
 public interface Searchable/*<T>*/ {
     
-    <T> void search(Collection<T> lstObjects, String toSearch) throws NullPointerException;
+    <T> boolean search(Collection<T> lstObjects, String toSearch) throws NullPointerException;
     //public Object searchObject(Collection<Object> lstObjects, String toSearch) throws NullPointerException;
 }

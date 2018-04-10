@@ -36,7 +36,8 @@ public class NewMain1 {
         System.out.println(a.getProducto());
         a.search(a.getLstProductos(), "Queso");
         System.out.println(a.getProducto());
-        a.search(a.getLstCategorias(), "Lacteos");
+        System.out.println(a.search(a.getLstCategorias(), "Lacteos"));
+        System.out.println(a.getFoundObject());
         /*
         for(Producto p: a.getLstProductos()){
             System.out.println(p);
@@ -80,10 +81,10 @@ public class NewMain1 {
         administrador1.setContraseña("chirulo76");
         
         Usuario administrador2 = new Administrador();
-        administrador1.setNombre("Pedro");
-        administrador1.setCedula("987654321");
-        administrador1.setTelefono("88988754");
-        administrador1.setContraseña("pedro123"); 
+        administrador2.setNombre("Pedro");
+        administrador2.setCedula("987654321");
+        administrador2.setTelefono("88988754");
+        administrador2.setContraseña("pedro123"); 
         
         
     }
