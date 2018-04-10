@@ -69,9 +69,11 @@ class Item {
     }
     
     public Producto searchProduct(Collection<Producto> lstProductos, String toSearch) throws NullPointerException{
+        try{
         System.out.println("El queso " + this.foundProducto);
         for(Producto producto: lstProductos){
             if(toSearch.equals((producto.getNombre()))){
+                this.producto = producto;
                 this.foundProducto = true;
                 System.out.println(toSearch + " se encuentra en la lista.");
                 break;
@@ -81,13 +83,18 @@ class Item {
             System.out.println(toSearch + " no esta en la lista");
         }
     }
-        return null;
+        return producto;
+        }finally{
+            this.foundProducto = false;
+        }
 }
     
     public Combo searchCombo(Collection<Combo> lstCombos, String toSearch) throws NullPointerException{
+        try{
         System.out.println("El queso " + this.foundCombo);
         for(Combo combo: lstCombos){
             if(toSearch.equals((combo.getNombre()))){
+                this.combo = combo;
                 this.foundCombo = true;
                 System.out.println(toSearch + " se encuentra en la lista.");
                 break;
@@ -97,13 +104,18 @@ class Item {
             System.out.println(toSearch + " no esta en la lista");
         }
     }
-        return null;
+        return combo;
+        }finally{
+            this.foundCombo = false;
+        }
 }
     
     public Promocion searchPromocion(Collection<Promocion> lstPromociones, String toSearch) throws NullPointerException{
-        System.out.println("El queso " + this.foundProducto);
+        try{
+            System.out.println("El queso " + this.foundProducto);
         for(Promocion promocion: lstPromociones){
             if(toSearch.equals((promocion.getNombre()))){
+                this.promocion = promocion;
                 this.foundPromocion = true;
                 System.out.println(toSearch + " se encuentra en la lista.");
                 break;
@@ -113,6 +125,9 @@ class Item {
             System.out.println(toSearch + " no esta en la lista");
         }
     }
-        return null;
+        return promocion;
+       }finally{
+            this.foundPromocion = false;
+        }
 }
 }
