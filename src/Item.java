@@ -17,6 +17,7 @@ class Item {
     private int numeroConsecutivo;
     private int cantidad;
     private Producto producto;
+    private boolean foundProducto;
     
     public Item(){}
     

@@ -23,7 +23,7 @@ public class Carrito implements Searchable{
     
     public Carrito(){}
     
-    public Carrito(List lstItems, List lstPromociones,List ListCombos, Cliente cliente){
+    public Carrito(List lstItems, List lstPromociones,List lstCombos, Cliente cliente){
         this.cliente = cliente;
         this.lstItems = lstItems;
         this.lstCombos = lstCombos;

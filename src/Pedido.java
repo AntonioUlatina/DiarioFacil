@@ -19,6 +19,7 @@ class Pedido {
     private Proveedor proveedor;
     private List<Producto> lstProductos = new ArrayList<>();
     private Date fecha;
+    private boolean foundProducto;
 
     public Pedido(String pedidoId, Proveedor proveedor, Date fecha) {
         this.pedidoId = pedidoId;

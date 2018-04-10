@@ -16,6 +16,7 @@ class Categoria {
 
     private String nombre;
     private List<Producto> lstProductos = new ArrayList<>();
+    private boolean foundProducto;
 
     Categoria() {
     }
