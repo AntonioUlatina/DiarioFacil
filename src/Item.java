@@ -39,6 +39,38 @@ class Item {
         }
     }
 
+    public Combo getCombo() {
+        return combo;
+    }
+
+    public void setCombo(Combo combo) {
+        this.combo = combo;
+    }
+
+    public Promocion getPromocion() {
+        return promocion;
+    }
+
+    public void setPromocion(Promocion promocion) {
+        this.promocion = promocion;
+    }
+
+    public boolean isFoundCombo() {
+        return foundCombo;
+    }
+
+    public void setFoundCombo(boolean foundCombo) {
+        this.foundCombo = foundCombo;
+    }
+
+    public boolean isFoundPromocion() {
+        return foundPromocion;
+    }
+
+    public void setFoundPromocion(boolean foundPromocion) {
+        this.foundPromocion = foundPromocion;
+    }
+
     public int getNumeroConsecutivo() {
         return numeroConsecutivo;
     }
@@ -70,7 +102,6 @@ class Item {
     
     public Producto searchProduct(Collection<Producto> lstProductos, String toSearch) throws NullPointerException{
         try{
-        System.out.println("El queso " + this.foundProducto);
         for(Producto producto: lstProductos){
             if(toSearch.equals((producto.getNombre()))){
                 this.producto = producto;
@@ -91,7 +122,6 @@ class Item {
     
     public Combo searchCombo(Collection<Combo> lstCombos, String toSearch) throws NullPointerException{
         try{
-        System.out.println("El queso " + this.foundCombo);
         for(Combo combo: lstCombos){
             if(toSearch.equals((combo.getNombre()))){
                 this.combo = combo;
@@ -112,7 +142,6 @@ class Item {
     
     public Promocion searchPromocion(Collection<Promocion> lstPromociones, String toSearch) throws NullPointerException{
         try{
-            System.out.println("El queso " + this.foundProducto);
         for(Promocion promocion: lstPromociones){
             if(toSearch.equals((promocion.getNombre()))){
                 this.promocion = promocion;
