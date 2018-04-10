@@ -18,6 +18,8 @@ public class Carrito implements Searchable{
     private List<Promocion> lstPromociones = new ArrayList<>();
     private List<Combo> lstCombos = new ArrayList<>();
     private Cliente cliente;
+    private boolean foundItem;
+    private boolean foundObject;
     
     public Carrito(){}
     
@@ -60,11 +62,12 @@ public class Carrito implements Searchable{
         this.cliente = cliente;
     }
     
-    public <T> void search(Collection<T> lstObjects, String toSearch) throws NullPointerException{
+    @Override
+    public <T> boolean search(Collection<T> lstObjects, String toSearch) throws NullPointerException{
+         try{
         for(T object: lstObjects){
             if((object instanceof Producto && toSearch.equals(((Producto) object).getNombre()))){
                 this.foundObject = true;
-                this.item = (Item) object;
                 System.out.println(toSearch + " se encuentra en la lista.");
                 break;
             }
@@ -84,21 +87,25 @@ public class Carrito implements Searchable{
                 break;
             }
         }
-    @Override
-    public String toString() {
-        return "Carrito{" + "lstItems=" + lstItems + ", lstPromociones=" + lstPromociones + ", lstCombos=" + lstCombos + ", cliente=" + cliente + '}';
+        if(!this.foundObject){
+            System.out.println(toSearch + " no esta en la lista");
+        }
+        return this.foundObject;
+        }finally{
+        this.foundObject = false;
+                }
     }
     
-    public Producto searchProduct(Collection<Producto> lstProductos, String toSearch) throws NullPointerException{
-        System.out.println("El queso " + this.foundProducto);
-        for(Producto producto: lstProductos){
-            if(toSearch.equals((producto.getNombre()))){
-                this.foundProducto = true;
+    public Item searchItem(Collection<Item> lstItems, String toSearch) throws NullPointerException{
+
+        for(Item item: lstItems){
+            if(toSearch.equals((item.getProducto().getNombre()))){
+                this.foundItem = true;
                 System.out.println(toSearch + " se encuentra en la lista.");
                 break;
             }
         
-        if(!this.foundProducto){
+        if(!this.foundItem){
             System.out.println(toSearch + " no esta en la lista");
         }
     }
