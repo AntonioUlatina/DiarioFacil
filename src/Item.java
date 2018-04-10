@@ -84,7 +84,7 @@ class Item {
         return null;
 }
     
-    public Combo searchProduct(Collection<Combo> lstCombos, String toSearch) throws NullPointerException{
+    public Combo searchCombo(Collection<Combo> lstCombos, String toSearch) throws NullPointerException{
         System.out.println("El queso " + this.foundCombo);
         for(Combo combo: lstCombos){
             if(toSearch.equals((combo.getNombre()))){
