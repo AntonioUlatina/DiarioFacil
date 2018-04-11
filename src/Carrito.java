@@ -1,5 +1,6 @@
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 /*
@@ -12,15 +13,16 @@ import java.util.List;
  *
  * @author Mateo Marin
  */
-public class Carrito {
+public class Carrito{
     private List<Item> lstItems = new ArrayList<>();
     private List<Promocion> lstPromociones = new ArrayList<>();
     private List<Combo> lstCombos = new ArrayList<>();
     private Cliente cliente;
+    private boolean foundItem;
     
     public Carrito(){}
     
-    public Carrito(List lstItems, List lstPromociones,List ListCombos, Cliente cliente){
+    public Carrito(List lstItems, List lstPromociones,List lstCombos, Cliente cliente){
         this.cliente = cliente;
         this.lstItems = lstItems;
         this.lstCombos = lstCombos;
@@ -58,11 +60,38 @@ public class Carrito {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
-
-    @Override
-    public String toString() {
-        return "Carrito{" + "lstItems=" + lstItems + ", lstPromociones=" + lstPromociones + ", lstCombos=" + lstCombos + ", cliente=" + cliente + '}';
+    
+    public boolean searchItem(Collection<Item> lstItems, String toSearch) throws NullPointerException{
+        try{
+        for(Item item: lstItems){
+            if(toSearch.equals((item.getProducto().getNombre()))){
+                this.foundItem = true;
+                System.out.println("El producto " + toSearch + " se encuentra en la lista.");
+                break;
+            }
+            if(toSearch.equals((item.getCombo().getNombre()))){
+                this.foundItem = true;
+                System.out.println("El combo " + toSearch + " se encuentra en la lista.");
+                break;
+            }
+            if(toSearch.equals((item.getPromocion().getNombre()))){
+                this.foundItem = true;
+                System.out.println("La promocion " + toSearch + " se encuentra en la lista.");
+                break;
+            }
+        
+        if(!this.foundItem){
+            System.out.println(toSearch + " no esta en la lista");
+        }
     }
+        return this.foundItem;
+        }finally{
+        this.foundItem = false;
+                }
+}
     
-    
+    public void eliminarItem(Collection<Item> lstItems, String toDelete){//El metodo para eliminar un producto
+            if(searchItem(lstItems, toDelete))
+                lstItems.remove(toDelete);
+    }
 }

@@ -1,3 +1,6 @@
+
+import java.util.Collection;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -14,6 +17,7 @@ public abstract class Usuario {
     protected String cedula;
     protected String telefono;
     //protected boolean permisos; //Esto va ser para quien puede ver que cosas pero no lo siento util porque los metodos solo van en adm
+    private boolean foundUser;
     
     Usuario(){};
     
@@ -70,5 +74,19 @@ public abstract class Usuario {
         return "Usuario{" + "nombre=" + nombre + ", contrase\u00f1a=" + contraseña + ", cedula=" + cedula + ", telefono=" + telefono + '}';
     }
     
-    
+    public Usuario searchUser(Collection<Usuario> lstProductos, String toSearch) throws NullPointerException{
+
+        for(Usuario user: lstProductos){
+            if(toSearch.equals((user.getNombre()))){
+                this.foundUser = true;
+                System.out.println(toSearch + " se encuentra en la lista.");
+                break;
+            }
+        
+        if(!this.foundUser){
+            System.out.println(toSearch + " no esta en la lista");
+        }
+    }
+        return null;
+}
 }

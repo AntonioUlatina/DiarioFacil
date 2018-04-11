@@ -1,5 +1,6 @@
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import java.util.TreeMap;
@@ -17,9 +18,35 @@ class Orden {
 
     private Cliente cliente;
     private Carrito carrito;
+    private String orderID;
+
+    public String getOrderID() {
+        return orderID;
+    }
+
+    public void setOrderID(String orderID) {
+        this.orderID = orderID;
+    }
+
+    public List<Item> getLstItems() {
+        return lstItems;
+    }
+
+    public void setLstItems(List<Item> lstItems) {
+        this.lstItems = lstItems;
+    }
+
+    public boolean isFoundOrder() {
+        return foundOrder;
+    }
+
+    public void setFoundOrder(boolean foundOrder) {
+        this.foundOrder = foundOrder;
+    }
     private Date fechaCreacion;
     //private TreeMap<Item> lstItems;
     private List<Item> lstItems = new ArrayList<>();
+    private boolean foundOrder;
     
     public Orden(){}
     
@@ -52,4 +79,20 @@ class Orden {
     public void setFechaCreacion(Date fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
     }
+    
+    public Orden searchOrder(Collection<Orden> lstOrdenes, String toSearch) throws NullPointerException{
+        System.out.println("El queso " + this.foundOrder);
+        for(Orden order: lstOrdenes){
+            if(toSearch.equals(order.getOrderID())){
+                this.foundOrder = true;
+                System.out.println(toSearch + " se encuentra en la lista.");
+                break;
+            }
+        
+        if(!this.foundOrder){
+            System.out.println(toSearch + " no esta en la lista");
+        }
+    }
+        return null;
+}
 }

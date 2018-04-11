@@ -1,5 +1,6 @@
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
@@ -18,6 +19,7 @@ class Pedido {
     private Proveedor proveedor;
     private List<Producto> lstProductos = new ArrayList<>();
     private Date fecha;
+    private boolean foundProducto;
 
     public Pedido(String pedidoId, Proveedor proveedor, Date fecha) {
         this.pedidoId = pedidoId;
@@ -70,4 +72,19 @@ class Pedido {
         return "Pedido{" + "pedidoId=" + pedidoId + ", proveedor=" + proveedor + ", lstProductos=" + lstProductos + ", fecha=" + fecha + '}';
     }
     
+    public Producto searchProduct(Collection<Producto> lstProductos, String toSearch) throws NullPointerException{
+        System.out.println("El queso " + this.foundProducto);
+        for(Producto producto: lstProductos){
+            if(toSearch.equals((producto.getNombre()))){
+                this.foundProducto = true;
+                System.out.println(toSearch + " se encuentra en la lista.");
+                break;
+            }
+        
+        if(!this.foundProducto){
+            System.out.println(toSearch + " no esta en la lista");
+        }
+    }
+        return null;
+}
 }

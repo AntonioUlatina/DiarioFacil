@@ -1,5 +1,6 @@
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 /*
@@ -16,6 +17,7 @@ class Proveedor {
     private String nombre;
     private String email;
     private List<Producto> lstProductos = new ArrayList<>();
+    private boolean foundProveedor;
     
     Proveedor(){}
     Proveedor(String nombre,String email, List<Producto> lstProductos){
@@ -53,4 +55,19 @@ class Proveedor {
         return "Proveedor{" + "nombre=" + nombre + ", email=" + email + ", lstProductos=" + lstProductos + '}';
     }
     
+    public Proveedor searchProvider(Collection<Proveedor> lstProveedores, String toSearch) throws NullPointerException{
+        System.out.println("El queso " + this.foundProveedor);
+        for(Proveedor provider: lstProveedores){
+            if(toSearch.equals((provider.getNombre()))){
+                this.foundProveedor = true;
+                System.out.println(toSearch + " se encuentra en la lista.");
+                break;
+            }
+        
+        if(!this.foundProveedor){
+            System.out.println(toSearch + " no esta en la lista");
+        }
+    }
+        return null;
+}
 }

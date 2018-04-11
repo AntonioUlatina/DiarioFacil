@@ -70,16 +70,32 @@ public final class Administrador extends Usuario implements Searchable{
     protected <T> void create(String nuevo, T... varArgs){
         switch (nuevo){
             case "producto":
+                if(!search(lstProductos, nuevo)){
                 this.lstProductos.add(new Producto((String) varArgs[0],(String) varArgs[1],(Integer) varArgs[2]));
+                }else{
+                    System.out.println("Este producto ya existe");
+                }
                 break;
             case "categoria":
+                if(!search(lstCategorias, nuevo)){
                 this.lstCategorias.add(new Categoria((String) varArgs[0], (List<Producto>) varArgs[1]));
+                }else{
+                    System.out.println("Esta categoria ya existe");
+                }
                 break;
             case "proveedor":
+                if(!search(lstProveedores, nuevo)){
                 this.lstProveedores.add(new Proveedor((String) varArgs[0],(String) varArgs[1], (List<Producto>) varArgs[2]));
+                }else{
+                    System.out.println("Este proveedor ya existe");
+                }
                 break;
             case "pedido":
+                if(!search(lstPedidos, nuevo)){
                 this.lstPedidos.add(new Pedido((String) varArgs[0], (Proveedor) varArgs[1], (List<Producto>) varArgs[2], Date.from(Instant.now())));
+                }else{
+                    System.out.println("Este pedido ya existe");
+                }
                 break;
             default:
                 System.out.println(nuevo + " is not a valid Class; please insert a valid Class");
@@ -247,7 +263,8 @@ protected <T> void delete(T... objectToDelete){//El metodo para eliminar un usua
         this.foundObject = foundObject;
     }
     
-    public <T> void search(Collection<T> lstObjects, String toSearch) throws NullPointerException{
+    public <T> boolean search(Collection<T> lstObjects, String toSearch) throws NullPointerException{
+        try{
         for(T object: lstObjects){
             if((object instanceof Producto && toSearch.equals(((Producto) object).getNombre()))){
                 this.foundObject = true;
@@ -275,7 +292,10 @@ protected <T> void delete(T... objectToDelete){//El metodo para eliminar un usua
         if(!this.foundObject){
             System.out.println(toSearch + " no esta en la lista");
         }
+        return this.foundObject;
+        }finally{
         this.foundObject = false;
+                }
     }
 }
         /*
