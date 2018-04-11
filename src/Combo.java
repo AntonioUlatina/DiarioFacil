@@ -14,7 +14,7 @@ import java.util.List;
  *
  * @author Mateo Marin
  */
-class Combo {
+class Combo extends Item{
     private List<Item> lstItems = new ArrayList<>();
     private Date diaPromocion;
     private Period periodoOferta;

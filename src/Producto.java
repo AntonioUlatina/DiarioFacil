@@ -11,7 +11,7 @@ import java.util.Collection;
  *
  * @author Mateo Marin
  */
-class Producto /*implements Searchable*/{
+class Producto extends Item/*implements Searchable*/{
     private String nombre;
     private String descripcion;
     private int precio;
