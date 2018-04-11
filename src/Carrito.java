@@ -61,15 +61,13 @@ public class Carrito{
         this.cliente = cliente;
     }
     
-<<<<<<< HEAD
     public <T> void addItem(Collection<Item> lstItems, Item toAdd){
         if(searchItem(lstItems, toAdd)){
             System.out.printf("Este %s ya habia sido anadido al carrito", toAdd);
         }else{
             lstItems.add(toAdd);
         }
-=======
-
+    }
     
     public boolean searchItem(Collection<Item> lstItems, Item toSearch) throws NullPointerException{
         try{
