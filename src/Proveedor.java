@@ -56,7 +56,7 @@ class Proveedor {
     }
     
     public Proveedor searchProvider(Collection<Proveedor> lstProveedores, String toSearch) throws NullPointerException{
-        System.out.println("El queso " + this.foundProveedor);
+        
         for(Proveedor provider: lstProveedores){
             if(toSearch.equals((provider.getNombre()))){
                 this.foundProveedor = true;

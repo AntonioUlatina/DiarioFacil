@@ -22,14 +22,15 @@ public class NewMain1 {
     public static void main(String[] args) {
         //printStar(10);
         Administrador a = new Administrador();
-        //Producto p1 = new Producto();
-        //Producto p2 = new Producto();
-        //Producto p3 = new Producto();
-        //Categoria c = new Categoria("wines", a.getLstProductos());
-        //a.addObjects(p1, p2, p3, c);
+        Producto p1 = new Producto();
+        Producto p2 = new Producto();
+        Producto p3 = new Producto();
+        Categoria c = new Categoria("wines", a.getLstProductos());
+        a.addObjects(p1, p2, p3, c);
         a.create("producto", "Queso", "Galleta", 3);
         a.create("producto", "milk", "lacteo", 10);
         a.create("categoria", "Lacteos", a.getLstProductos());
+        a.addObjects(p2, p3);
         //System.out.println(a.getLstCategorias());
         a.search(a.getLstCategorias(), "Lacteos");
         a.search(a.getLstProductos(), "milk");
