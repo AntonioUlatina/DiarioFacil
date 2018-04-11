@@ -16,7 +16,7 @@ import java.util.List;
  *
  * @author Mateo Marin
  */
-public final class Administrador extends Usuario implements Searchable{
+public final class Administrador extends Usuario implements Searchable, Findable{
     private List<Proveedor> lstProveedores = new ArrayList<>(); 
     private List<Pedido> lstPedidos = new ArrayList<>();
     private List<Producto> lstProductos = new ArrayList<>();
@@ -125,13 +125,20 @@ public final class Administrador extends Usuario implements Searchable{
     protected <Generic> void addObjects(Generic... Objetos){
         for(Generic objeto: Objetos){
             if(objeto instanceof Producto)
-                this.lstProductos.add((Producto) objeto);
+                if(!this.lstProductos.contains(objeto))
+                    this.lstProductos.add((Producto) objeto);
             if (objeto instanceof Categoria)
-                this.lstCategorias.add((Categoria) objeto);
+                if(!this.lstCategorias.contains(objeto))
+                    this.lstCategorias.add((Categoria) objeto);
             if (objeto instanceof Proveedor)
-                this.lstProveedores.add((Proveedor) objeto);
-            if (objeto instanceof Pedido)
-                this.lstPedidos.add((Pedido) objeto);
+                if(!this.lstProveedores.contains(objeto))
+                    this.lstProveedores.add((Proveedor) objeto);
+            if (objeto instanceof Pedido){
+                if(!this.lstPedidos.contains(objeto))
+                    this.lstPedidos.add((Pedido) objeto);
+            }else{
+                System.out.printf("El %s ya existe en la lista \n", objeto);
+            }
         }
     }
     protected void modificarCliente(Cliente cliente, String field, String fieldValue){ //El metodo para modificar un usuario.Es void se debe tal vez cambiar
@@ -296,6 +303,11 @@ protected <T> void delete(T... objectToDelete){//El metodo para eliminar un usua
         }finally{
         this.foundObject = false;
                 }
+    }
+    
+    @Override
+    public <T> Boolean found(T objeto){
+        return foundObject;
     }
 }
         /*

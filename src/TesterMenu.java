@@ -21,57 +21,21 @@ public class TesterMenu {
 
     /**
      * @param args the command line arguments
+     * @throws java.io.IOException
      */
+    public static boolean noSalir = true;
     public static void main(String[] args) throws IOException {
         // TODO code application logic here
-
-        DiarioFacil df = new DiarioFacil();
-
-        Usuario cliente1 = new Cliente();
-        cliente1.setCedula("12345678");
-        cliente1.setNombre("Mateo Marin");
-        cliente1.setTelefono("84863651");
-        cliente1.setContraseña("vaca94");
-
-        Usuario cliente2 = new Cliente();
-        cliente2.setCedula("117580729");
-        cliente2.setNombre("Luis Fernandez");
-        cliente2.setTelefono("83730387");
-        cliente2.setContraseña("reloj123");
-
-        Usuario cliente3 = new Cliente();
-        cliente3.setCedula("115689435");
-        cliente3.setNombre("Antonio Alvarez");
-        cliente3.setTelefono("88987432");
-        cliente3.setContraseña("gallina23");
-
-        Usuario administrador1 = new Administrador();
-        administrador1.setNombre("Jaime");
-        administrador1.setCedula("123456789");
-        administrador1.setTelefono("22253625");
-        administrador1.setContraseña("chirulo76");
-
-        Usuario administrador2 = new Administrador();
-        administrador1.setNombre("Pedro");
-        administrador1.setCedula("987654321");
-        administrador1.setTelefono("88988754");
-        administrador1.setContraseña("pedro123");
-
-        df.agregarUsuario(cliente1);
-        df.agregarUsuario(cliente2);
-        df.agregarUsuario(cliente3);
-        df.agregarUsuario(administrador1);
-        df.agregarUsuario(administrador2);
-
         out.println("Diario Facil");
         int opc;
-        boolean salir;
+
+        boolean noSalir;
 
         do {
             mostrarMenu();
             opc = leerOpcion();
-            salir = ejecutarAccion(opc);
-        } while(!salir);
+            noSalir = ejecutarAccion(opc);
+        } while(noSalir);
     }
 
     public static void mostrarMenu() {
@@ -96,7 +60,7 @@ public class TesterMenu {
 
     public static boolean ejecutarAccion(int popcion) throws java.io.IOException {
 
-        boolean salir = false;
+        boolean noSalir = false;
         int numProd = 0;
 
         switch (popcion) {
@@ -113,7 +77,7 @@ public class TesterMenu {
                 break;
             case 3://Salir
                 out.println("Gracias por usar Diario Facil");
-                salir = true;
+                noSalir = true;
                 break;
 
             default: //Cualquier otro valor dado por el usuario se considera inválido
@@ -122,10 +86,12 @@ public class TesterMenu {
                 out.println();
                 break;
         }
-        return salir;
+        return noSalir;
     }
 
     public static void login() throws IOException {
+        Scanner leer = new Scanner(System.in);
+        //CARGA DE DATOS
         DiarioFacil df = new DiarioFacil();
 
         Usuario cliente1 = new Cliente();
@@ -163,13 +129,12 @@ public class TesterMenu {
         df.agregarUsuario(cliente3);
         df.agregarUsuario(administrador1);
         df.agregarUsuario(administrador2);
-        Scanner leer = new Scanner(System.in);
+
         int cod;
         out.println("1. Como administrador\n");
         out.println("2. Como usuario\n");
         out.println("Digite la opcion: \n");
         cod = leer.nextInt();
-        out.println(df.getLstUsuarios());
         switch (cod) {
             case 1:
                 out.println("Digite su usuario de administrador : \n");
@@ -178,14 +143,20 @@ public class TesterMenu {
                 String pass = in.readLine();
                 for (Usuario usuario : df.getLstUsuarios()) {
                     if (user.equals(usuario.getNombre()) && pass.equals(usuario.getContraseña())) {
-                        mostrarMenuAdministrador();
+                        if (usuario instanceof Administrador) {
+                            mostrarMenuAdministrador();
+                            noSalir = false;
+                        }
+                        else{
+                            out.println("Escogiste la opcion incorrecta. Por favor escoja otra vez");
+                            login();
+                            noSalir = false;
+                        }
                     }
                 }
                 break;
         }
     }
-
-
 
     public static void registro() throws IOException {
         out.println("Digite un nombre : ");

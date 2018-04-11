@@ -61,6 +61,10 @@ public class Carrito{
         this.cliente = cliente;
     }
     
+
+    public <T> void addItem(){
+        
+    }
     public boolean searchItem(Collection<Item> lstItems, String toSearch) throws NullPointerException{
         try{
         for(Item item: lstItems){
