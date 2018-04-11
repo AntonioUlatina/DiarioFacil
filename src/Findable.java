@@ -14,7 +14,7 @@ import java.util.Collection;
 public interface Findable extends Searchable{
     <T> Boolean found(T searched);
     //To be passed to an Interface called Modifiable
-    <T> T modify(T searched, Collection<T> toModify);
+    //<T> T modify(T searched, Collection<T> toModify);
     //public <T> T search(Collection<T> lstObjects, String toSearch) throws NullPointerException;
     //public Object searchObject(Collection<Object> lstObjects, String toSearch) throws NullPointerException;
 }

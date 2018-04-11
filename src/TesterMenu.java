@@ -28,11 +28,8 @@ public class TesterMenu {
         // TODO code application logic here
         out.println("Diario Facil");
         int opc;
-<<<<<<< HEAD
-        
-=======
+
         boolean salir;
->>>>>>> 0199242ae58200819b3a654da5cf992dc2d239ad
 
         do {
             mostrarMenu();
