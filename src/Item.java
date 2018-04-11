@@ -13,7 +13,7 @@ import java.util.List;
  *
  * @author Mateo Marin
  */
-class Item {
+    abstract class Item {
     private int numeroConsecutivo;
     private int cantidad;
     private Producto producto;

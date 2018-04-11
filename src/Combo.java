@@ -32,6 +32,22 @@ class Combo extends Item{
     
     public Combo(){}
     
+    //este es un constructor con proposito de test solamente 
+    public Combo(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public <T extends Object> Combo(Date diaPromocion, Period periodoOferta, int descuento, int precioCombo, String nombre, int numeroConsecutivo, int cantidad, T item) {
+        super(numeroConsecutivo, cantidad, item);
+        this.diaPromocion = diaPromocion;
+        this.periodoOferta = periodoOferta;
+        this.descuento = descuento;
+        this.precioCombo = precioCombo;
+        this.nombre = nombre;
+    }
+    
+    
+    
     public Combo(List lstItems,Date diaPromocion,Period periodoOferta, int descuento, int precioCombo){
         this.lstItems = lstItems;
         this.diaPromocion = diaPromocion;

@@ -15,6 +15,20 @@ import java.util.List;
  * @author Mateo Marin
  */
 class Promocion extends Item{
+
+    //este es un constructor con proposito de test solamente 
+    public Promocion(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public <T extends Object> Promocion(Date diaPromocion, Period periodoOferta, int descuento, int precioPromo, String nombre, int numeroConsecutivo, int cantidad, T item) {
+        super(numeroConsecutivo, cantidad, item);
+        this.diaPromocion = diaPromocion;
+        this.periodoOferta = periodoOferta;
+        this.descuento = descuento;
+        this.precioPromo = precioPromo;
+        this.nombre = nombre;
+    }
     private List<Item> lstItems = new ArrayList<>();
     private Date diaPromocion;
     private Period periodoOferta;

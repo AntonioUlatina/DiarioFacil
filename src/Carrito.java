@@ -73,26 +73,24 @@ public class Carrito {
     public boolean searchItem(Collection<Item> lstItems, Item toSearch) throws NullPointerException {
         try {
             for (Item item : lstItems) {
-                if (item.getProducto() != null) {
-                    if (toSearch.equals((item.getProducto()))) {
+                
+                    if (item instanceof Producto) {
                         this.foundItem = true;
-                        System.out.println("El producto " + toSearch.getProducto().getNombre() + " se encuentra en la lista.");
+                        System.out.println("El producto " + ((Producto) item).getNombre() + " se encuentra en la lista.");
                         break;
                     }
-                } else if (item.getCombo() != null) {
-                    if (toSearch.getCombo().equals((item.getCombo()))) {
+                    if (item instanceof Combo) {
                         this.foundItem = true;
-                        System.out.println("El combo " + toSearch.getCombo().getNombre() + " se encuentra en la lista.");
+                        System.out.println("El combo " + ((Combo) item).getNombre() + " se encuentra en la lista.");
                         break;
                     }
-                } else if (item.getPromocion() != null) {
-                    if (toSearch.equals((item.getPromocion()))) {
+                    if (item instanceof Promocion) {
                         this.foundItem = true;
-                        System.out.println("La promocion " + toSearch.getPromocion().getNombre() + " se encuentra en la lista.");
+                        System.out.println("La promocion " + ((Promocion) item).getNombre() + " se encuentra en la lista.");
                         break;
                     }
 
-                }
+                
                 if (!this.foundItem) {
                     System.out.println(toSearch + " no esta en la lista");
                 }
