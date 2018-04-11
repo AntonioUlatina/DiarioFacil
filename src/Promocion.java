@@ -21,8 +21,8 @@ class Promocion extends Item{
         this.nombre = nombre;
     }
 
-    public <T extends Object> Promocion(Date diaPromocion, Period periodoOferta, int descuento, int precioPromo, String nombre, int numeroConsecutivo, int cantidad, T item) {
-        super(numeroConsecutivo, cantidad, item);
+    public Promocion(Date diaPromocion, Period periodoOferta, int descuento, int precioPromo, String nombre, int numeroConsecutivo, int cantidad) {
+        super(numeroConsecutivo, cantidad);
         this.diaPromocion = diaPromocion;
         this.periodoOferta = periodoOferta;
         this.descuento = descuento;

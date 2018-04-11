@@ -15,7 +15,7 @@ import java.util.List;
  * @author Mateo Marin
  */
 class Combo extends Item{
-    private List<Item> lstItems = new ArrayList<>();
+
     private Date diaPromocion;
     private Period periodoOferta;
     private int descuento;
@@ -37,8 +37,8 @@ class Combo extends Item{
         this.nombre = nombre;
     }
 
-    public <T extends Object> Combo(Date diaPromocion, Period periodoOferta, int descuento, int precioCombo, String nombre, int numeroConsecutivo, int cantidad, T item) {
-        super(numeroConsecutivo, cantidad, item);
+    public Combo(Date diaPromocion, Period periodoOferta, int descuento, int precioCombo, String nombre, int numeroConsecutivo, int cantidad) {
+        super(numeroConsecutivo, cantidad);
         this.diaPromocion = diaPromocion;
         this.periodoOferta = periodoOferta;
         this.descuento = descuento;
@@ -46,22 +46,11 @@ class Combo extends Item{
         this.nombre = nombre;
     }
     
-    
-    
-    public Combo(List lstItems,Date diaPromocion,Period periodoOferta, int descuento, int precioCombo){
-        this.lstItems = lstItems;
+    public Combo(Date diaPromocion,Period periodoOferta, int descuento, int precioCombo){
         this.diaPromocion = diaPromocion;
         this.periodoOferta = periodoOferta;
         this.descuento = descuento;
         this.precioCombo = precioCombo;
-    }
-
-    public List<Item> getLstItems() {
-        return lstItems;
-    }
-
-    public void setLstItems(List<Item> lstItems) {
-        this.lstItems = lstItems;
     }
 
     public Date getDiaPromocion() {
@@ -98,7 +87,7 @@ class Combo extends Item{
 
     @Override
     public String toString() {
-        return "Combo{" + "lstItems=" + lstItems + ", diaPromocion=" + diaPromocion + ", periodoOferta=" + periodoOferta + ", descuento=" + descuento + ", precioCombo=" + precioCombo + '}';
+        return "Combo{" + ", diaPromocion=" + diaPromocion + ", periodoOferta=" + periodoOferta + ", descuento=" + descuento + ", precioCombo=" + precioCombo + '}';
     }
     
 }

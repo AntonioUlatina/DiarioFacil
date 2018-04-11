@@ -16,45 +16,20 @@ import java.util.List;
     abstract class Item {
     private int numeroConsecutivo;
     private int cantidad;
-    private Producto producto;
-    private Combo combo;
-    private Promocion promocion;
+
+    //private Producto producto;
+    //private Combo combo;
+    public Item(int numeroConsecutivo, int cantidad) {
+        this.numeroConsecutivo = numeroConsecutivo;
+        this.cantidad = cantidad;
+    }
+    //private Promocion promocion;
     private boolean foundProducto;
     private boolean foundCombo;
     private boolean foundPromocion;
     
     public Item(){}
     
-    public <T> Item(int numeroConsecutivo, int cantidad, T item){
-        this.numeroConsecutivo = numeroConsecutivo;
-        this.cantidad = cantidad;
-        if(item instanceof Producto){
-        this.producto = (Producto) item;
-        }
-        if(item instanceof Combo){
-            this.combo = (Combo) item;
-        }
-        if(item instanceof Promocion){
-            this.promocion = (Promocion) item;
-        }
-    }
-
-    public Combo getCombo() {
-        return combo;
-    }
-
-    public void setCombo(Combo combo) {
-        this.combo = combo;
-    }
-
-    public Promocion getPromocion() {
-        return promocion;
-    }
-
-    public void setPromocion(Promocion promocion) {
-        this.promocion = promocion;
-    }
-
     public boolean isFoundCombo() {
         return foundCombo;
     }
@@ -87,19 +62,12 @@ import java.util.List;
         this.cantidad = cantidad;
     }
 
-    public Producto getProducto() {
-        return producto;
-    }
-
-    public void setProducto(Producto producto) {
-        this.producto = producto;
-    }
-
     @Override
     public String toString() {
-        return "Item{" + "numeroConsecutivo=" + numeroConsecutivo + ", cantidad=" + cantidad + ", producto=" + producto + '}';
+        return "Item{" + "numeroConsecutivo=" + numeroConsecutivo + ", cantidad=" + cantidad + '}';
     }
-    
+   
+    /*
     public Producto searchProduct(Collection<Producto> lstProductos, String toSearch) throws NullPointerException{
         try{
         for(Producto producto: lstProductos){
@@ -158,5 +126,5 @@ import java.util.List;
        }finally{
             this.foundPromocion = false;
         }
-}
+}*/
 }
