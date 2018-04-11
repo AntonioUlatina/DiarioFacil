@@ -61,10 +61,15 @@ public class Carrito{
         this.cliente = cliente;
     }
     
-    public <T> void addItem(){
-        
+    public <T> void addItem(Collection<Item> lstItems, Item toAdd){
+        if(searchItem(lstItems, toAdd)){
+            System.out.printf("Este %s ya habia sido anadido al carrito", toAdd);
+        }else{
+            lstItems.add(toAdd);
+        }
     }
-    public boolean searchItem(Collection<Item> lstItems, String toSearch) throws NullPointerException{
+    
+    public boolean searchItem(Collection<Item> lstItems, Item toSearch) throws NullPointerException{
         try{
         for(Item item: lstItems){
             if(toSearch.equals((item.getProducto().getNombre()))){
@@ -93,7 +98,7 @@ public class Carrito{
                 }
 }
     
-    public void eliminarItem(Collection<Item> lstItems, String toDelete){//El metodo para eliminar un producto
+    public void deleteItem(Collection<Item> lstItems, Item toDelete){//El metodo para eliminar un producto
             if(searchItem(lstItems, toDelete))
                 lstItems.remove(toDelete);
     }
