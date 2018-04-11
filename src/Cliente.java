@@ -19,10 +19,13 @@ public class Cliente extends Usuario {
     private boolean foundCliente;
     public Cliente(){}
     
-    public Cliente(String direccion,ArrayList<Orden> lstOrdenes, String nombre,String contraseña,String cedula,String telefono){
+    public Cliente(String nombre,String contraseña,String cedula,String telefono,String direccion){
         super(nombre,contraseña,cedula,telefono);
         this.direccion = direccion;
-        this.lstOrdenes = lstOrdenes;
+    }
+
+    Cliente(String mateo_Marin) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public String getDireccion() {
@@ -31,14 +34,6 @@ public class Cliente extends Usuario {
 
     public void setDireccion(String direccion) {
         this.direccion = direccion;
-    }
-
-    public List<Orden> getLstOrdenes() {
-        return lstOrdenes;
-    }
-
-    public void setLstOrdenes(List<Orden> lstOrdenes) {
-        this.lstOrdenes = lstOrdenes;
     }
 
     @Override

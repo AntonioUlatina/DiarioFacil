@@ -13,13 +13,12 @@ import java.util.List;
  *
  * @author Mateo Marin
  */
-public class Carrito implements Searchable{
+public class Carrito{
     private List<Item> lstItems = new ArrayList<>();
     private List<Promocion> lstPromociones = new ArrayList<>();
     private List<Combo> lstCombos = new ArrayList<>();
     private Cliente cliente;
     private boolean foundItem;
-    private boolean foundObject;
     
     public Carrito(){}
     
@@ -62,46 +61,22 @@ public class Carrito implements Searchable{
         this.cliente = cliente;
     }
     
-    @Override
-    public <T> boolean search(Collection<T> lstObjects, String toSearch) throws NullPointerException{
-         try{
-        for(T object: lstObjects){
-            if((object instanceof Producto && toSearch.equals(((Producto) object).getNombre()))){
-                this.foundObject = true;
-                System.out.println(toSearch + " se encuentra en la lista.");
-                break;
-            }
-            if((object instanceof Categoria && toSearch.equals(((Categoria) object).getNombre()))){
-                this.foundObject = true;
-                System.out.println(toSearch + " se encuentra en la lista.");
-                break;
-            }
-            if((object instanceof Proveedor && toSearch.equals(((Proveedor) object).getNombre()))){
-                this.foundObject = true;
-                System.out.println(toSearch + " se encuentra en la lista.");
-                break;
-            }
-            if((object instanceof Pedido && toSearch.equals(((Pedido) object).getPedidoId()))){
-                this.foundObject = true;
-                System.out.println(toSearch + " se encuentra en la lista.");
-                break;
-            }
-        }
-        if(!this.foundObject){
-            System.out.println(toSearch + " no esta en la lista");
-        }
-        return this.foundObject;
-        }finally{
-        this.foundObject = false;
-                }
-    }
-    
-    public Item searchItem(Collection<Item> lstItems, String toSearch) throws NullPointerException{
-
+    public boolean searchItem(Collection<Item> lstItems, String toSearch) throws NullPointerException{
+        try{
         for(Item item: lstItems){
             if(toSearch.equals((item.getProducto().getNombre()))){
                 this.foundItem = true;
-                System.out.println(toSearch + " se encuentra en la lista.");
+                System.out.println("El producto " + toSearch + " se encuentra en la lista.");
+                break;
+            }
+            if(toSearch.equals((item.getCombo().getNombre()))){
+                this.foundItem = true;
+                System.out.println("El combo " + toSearch + " se encuentra en la lista.");
+                break;
+            }
+            if(toSearch.equals((item.getPromocion().getNombre()))){
+                this.foundItem = true;
+                System.out.println("La promocion " + toSearch + " se encuentra en la lista.");
                 break;
             }
         
@@ -109,7 +84,14 @@ public class Carrito implements Searchable{
             System.out.println(toSearch + " no esta en la lista");
         }
     }
-        return null;
+        return this.foundItem;
+        }finally{
+        this.foundItem = false;
+                }
 }
     
+    public void eliminarItem(Collection<Item> lstItems, String toDelete){//El metodo para eliminar un producto
+            if(searchItem(lstItems, toDelete))
+                lstItems.remove(toDelete);
+    }
 }
