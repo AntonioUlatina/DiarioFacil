@@ -14,8 +14,8 @@ import java.util.List;
  *
  * @author Mateo Marin
  */
-class Combo {
-    private List<Item> lstItems = new ArrayList<>();
+class Combo extends Item{
+
     private Date diaPromocion;
     private Period periodoOferta;
     private int descuento;
@@ -32,20 +32,25 @@ class Combo {
     
     public Combo(){}
     
-    public Combo(List lstItems,Date diaPromocion,Period periodoOferta, int descuento, int precioCombo){
-        this.lstItems = lstItems;
+    //este es un constructor con proposito de test solamente 
+    public Combo(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public Combo(Date diaPromocion, Period periodoOferta, int descuento, int precioCombo, String nombre, int numeroConsecutivo, int cantidad) {
+        super(numeroConsecutivo, cantidad);
         this.diaPromocion = diaPromocion;
         this.periodoOferta = periodoOferta;
         this.descuento = descuento;
         this.precioCombo = precioCombo;
+        this.nombre = nombre;
     }
-
-    public List<Item> getLstItems() {
-        return lstItems;
-    }
-
-    public void setLstItems(List<Item> lstItems) {
-        this.lstItems = lstItems;
+    
+    public Combo(Date diaPromocion,Period periodoOferta, int descuento, int precioCombo){
+        this.diaPromocion = diaPromocion;
+        this.periodoOferta = periodoOferta;
+        this.descuento = descuento;
+        this.precioCombo = precioCombo;
     }
 
     public Date getDiaPromocion() {
@@ -82,7 +87,7 @@ class Combo {
 
     @Override
     public String toString() {
-        return "Combo{" + "lstItems=" + lstItems + ", diaPromocion=" + diaPromocion + ", periodoOferta=" + periodoOferta + ", descuento=" + descuento + ", precioCombo=" + precioCombo + '}';
+        return "Combo{" + ", diaPromocion=" + diaPromocion + ", periodoOferta=" + periodoOferta + ", descuento=" + descuento + ", precioCombo=" + precioCombo + '}';
     }
     
 }

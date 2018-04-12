@@ -8,21 +8,22 @@ import java.util.List;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Mateo Marin
  */
-public class Carrito{
+public class Carrito {
+
     private List<Item> lstItems = new ArrayList<>();
     private List<Promocion> lstPromociones = new ArrayList<>();
     private List<Combo> lstCombos = new ArrayList<>();
     private Cliente cliente;
     private boolean foundItem;
-    
-    public Carrito(){}
-    
-    public Carrito(List lstItems, List lstPromociones,List lstCombos, Cliente cliente){
+        int i = 0;
+    public Carrito() {
+    }
+
+    public Carrito(List lstItems, List lstPromociones, List lstCombos, Cliente cliente) {
         this.cliente = cliente;
         this.lstItems = lstItems;
         this.lstCombos = lstCombos;
@@ -60,42 +61,32 @@ public class Carrito{
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
-    
 
-    public <T> void addItem(){
-        
+    public void addItem(Item... toAdd) {
+        for(Item item: toAdd){
+        if(searchItem(item)) {
+            System.out.printf("Este %s ya habia sido agregado al carrito\n", item.getClass().getName());
+        } else {
+            lstItems.add(item);
+            System.out.printf("Agregaste %s al carrito\n", item.getClass().getName());
+                }
+            } 
+        }
+
+    public boolean searchItem(Item item) throws ClassCastException, NullPointerException {
+                        return lstItems.contains(item);
     }
-    public boolean searchItem(Collection<Item> lstItems, String toSearch) throws NullPointerException{
-        try{
-        for(Item item: lstItems){
-            if(toSearch.equals((item.getProducto().getNombre()))){
-                this.foundItem = true;
-                System.out.println("El producto " + toSearch + " se encuentra en la lista.");
-                break;
-            }
-            if(toSearch.equals((item.getCombo().getNombre()))){
-                this.foundItem = true;
-                System.out.println("El combo " + toSearch + " se encuentra en la lista.");
-                break;
-            }
-            if(toSearch.equals((item.getPromocion().getNombre()))){
-                this.foundItem = true;
-                System.out.println("La promocion " + toSearch + " se encuentra en la lista.");
-                break;
-            }
-        
-        if(!this.foundItem){
-            System.out.println(toSearch + " no esta en la lista");
+
+    public void deleteItem(Collection<Item> lstItems, Item toDelete) {//El metodo para eliminar un producto
+        if (searchItem(toDelete)) {
+            lstItems.remove(toDelete);
         }
     }
-        return this.foundItem;
-        }finally{
-        this.foundItem = false;
-                }
-}
-    
-    public void eliminarItem(Collection<Item> lstItems, String toDelete){//El metodo para eliminar un producto
-            if(searchItem(lstItems, toDelete))
-                lstItems.remove(toDelete);
+
+    public void modificarCantidad(String toModify, int cantidad) {
+        for (Item item : this.getLstItems()) {
+            System.out.println(item.getClass());
+        }
     }
+
 }

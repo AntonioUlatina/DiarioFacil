@@ -11,22 +11,48 @@ import java.util.Collection;
  *
  * @author Mateo Marin
  */
-class Producto /*implements Searchable*/{
+class Producto extends Item/*implements Searchable*/{
     private String nombre;
     private String descripcion;
+    private String categoria;
+
+    public Producto(String nombre, String descripcion, String categoria, int precio, int stockMin, int numeroConsecutivo, int cantidad) {
+        super(numeroConsecutivo, cantidad);
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.categoria = categoria;
+        this.precio = precio;
+        this.stockMin = stockMin;
+    }
     private int precio;
     private int stockMin;
     private int stockMax;
     private boolean foundProducto;
     
     Producto (){}
-    Producto(String nombre, String descripcion, int precio,int stockMin,int stockMax){
+    
+    //este es un constructor con proposito de test solamente 
+    public Producto(String nombre) {
+        this.nombre = nombre;
+    }
+    
+Producto(String nombre, String descripcion, int precio,int stockMin,int stockMax){       
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.precio = precio;
         this.stockMin = stockMin;
         this.stockMax = stockMax;
     }
+    public Producto(String nombre, String descripcion, int precio, int stockMin, int stockMax, boolean foundProducto, int numeroConsecutivo, int cantidad) {
+        super(numeroConsecutivo, cantidad);
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.precio = precio;
+        this.stockMin = stockMin;
+        this.stockMax = stockMax;
+        this.foundProducto = foundProducto;
+    }
+    
 
     public Producto(String nombre, String descripcion, int precio) {
         this.nombre = nombre;
