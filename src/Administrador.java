@@ -124,23 +124,18 @@ public final class Administrador extends Usuario implements Searchable, Findable
     //Generic should be T(for type) by java convention
     protected <Generic> void addObjects(Generic... Objetos){
         for(Generic objeto: Objetos){
-            if(objeto instanceof Producto)
-                if(!this.lstProductos.contains(objeto))
-                    this.lstProductos.add((Producto) objeto);
-            if (objeto instanceof Categoria)
-                if(!this.lstCategorias.contains(objeto))
-                    this.lstCategorias.add((Categoria) objeto);
-            if (objeto instanceof Proveedor)
-                if(!this.lstProveedores.contains(objeto))
-                    this.lstProveedores.add((Proveedor) objeto);
-            if (objeto instanceof Pedido){
-                if(!this.lstPedidos.contains(objeto))
-                    this.lstPedidos.add((Pedido) objeto);
-            }else{
-                System.out.printf("El %s ya existe en la lista \n", objeto);
+            if(objeto instanceof Producto){
+                if(!search(lstProductos,objeto)) this.lstProductos.add((Producto) objeto); System.out.printf("El producto %s ya existe en la lista\n", ((Producto) objeto).getNombre());
+            }else if (objeto instanceof Categoria){
+                if(!search(lstCategorias,objeto)) this.lstCategorias.add((Categoria) objeto); System.out.printf("La categoria %s ya existe en la lista\n", ((Categoria) objeto).getNombre());
+            }else if (objeto instanceof Proveedor){
+                if(!search(lstProveedores,objeto)) this.lstProveedores.add((Proveedor) objeto); System.out.printf("El proveedor %s ya existe en la lista\n", ((Proveedor) objeto).getNombre());
+            }else if (objeto instanceof Pedido){
+                if(!search(lstPedidos,objeto)) this.lstPedidos.add((Pedido) objeto); System.out.printf("El pedido %s ya existe en la lista\n", ((Pedido) objeto).getPedidoId());
             }
         }
     }
+    
     protected void modificarCliente(Cliente cliente, String field, String fieldValue){ //El metodo para modificar un usuario.Es void se debe tal vez cambiar
         switch(field){
             case "nombre":
@@ -270,7 +265,13 @@ protected <T> void delete(T... objectToDelete){//El metodo para eliminar un usua
         this.foundObject = foundObject;
     }
     
-    public <T> boolean search(Collection<T> lstObjects, String toSearch) throws NullPointerException{
+    @Override
+    public <T> boolean search(Collection lstObjects, T object) throws ClassCastException, NullPointerException{
+        return lstObjects.contains(object);
+    }
+    
+   @Override 
+    public <T> boolean searchObject(Collection<T> lstObjects, String toSearch) throws ClassCastException, NullPointerException{
         try{
         for(T object: lstObjects){
             if((object instanceof Producto && toSearch.equals(((Producto) object).getNombre()))){

@@ -32,8 +32,8 @@ public class NewMain1 {
         a.create("categoria", "Lacteos", a.getLstProductos());
         a.addObjects(p2, p3);
         //System.out.println(a.getLstCategorias());
-        a.search(a.getLstCategorias(), "Lacteos");
-        a.search(a.getLstProductos(), "milk");
+        a.searchObject(a.getLstCategorias(), "Lacteos");
+        a.searchObject(a.getLstProductos(), "milk");
         System.out.println(a.getProducto());
         a.search(a.getLstProductos(), "Queso");
         System.out.println(a.getProducto());
