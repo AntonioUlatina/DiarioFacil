@@ -16,7 +16,7 @@ public final class Administrador extends Usuario implements Searchable, Findable
     private List<Categoria> lstCategorias = new ArrayList<>();
     private boolean foundObject;
     private Producto producto;
-    
+    public int i = 0;
     public Administrador (){}
     
     public Administrador(String nombre,String contraseña,String cedula,String telefono,ArrayList<Proveedor> lstProveedores,ArrayList<Pedido> lstPedidos,ArrayList<Producto> lstProductos,ArrayList<Categoria> lstCategorias){
@@ -117,14 +117,48 @@ public final class Administrador extends Usuario implements Searchable, Findable
     //Generic should be T(for type) by java convention
     protected <Generic> void addObjects(Generic... Objetos){
         for(Generic objeto: Objetos){
-            if(objeto instanceof Producto){
-                if(!search(lstProductos,objeto)) this.lstProductos.add((Producto) objeto); System.out.printf("El producto %s ya existe en la lista\n", ((Producto) objeto).getNombre());
-            }if (objeto instanceof Categoria){
-                if(!search(lstCategorias,objeto)) this.lstCategorias.add((Categoria) objeto); System.out.printf("La categoria %s ya existe en la lista\n", ((Categoria) objeto).getNombre());
-            }if (objeto instanceof Proveedor){
-                if(!search(lstProveedores,objeto)) this.lstProveedores.add((Proveedor) objeto); System.out.printf("El proveedor %s ya existe en la lista\n", ((Proveedor) objeto).getNombre());
-            }if (objeto instanceof Pedido){
-                if(!search(lstPedidos,objeto)) this.lstPedidos.add((Pedido) objeto); System.out.printf("El pedido %s ya existe en la lista\n", ((Pedido) objeto).getPedidoId());
+            if(objeto instanceof Producto && !search(lstProductos,objeto)){
+                this.lstProductos.add((Producto) objeto);
+            }else if(objeto instanceof Producto && search(lstProductos,objeto)){
+                System.out.printf("El producto %s ya existe en la lista\n", ((Producto) objeto).getNombre());}
+            if(objeto instanceof Categoria && !search(lstCategorias,objeto)){
+                this.lstCategorias.add((Categoria) objeto);
+            }else if(objeto instanceof Producto && search(lstCategorias,objeto)){
+                System.out.printf("La categoria %s ya existe en la lista\n", ((Categoria) objeto).getNombre());}
+            if(objeto instanceof Proveedor && !search(lstProveedores,objeto)){
+                this.lstProveedores.add((Proveedor) objeto);
+            }else if(objeto instanceof Producto && search(lstProveedores,objeto)){
+                System.out.printf("El proveedor %s ya existe en la lista\n", ((Proveedor) objeto).getNombre());}
+            if(objeto instanceof Pedido && !search(lstPedidos,objeto)){
+                this.lstPedidos.add((Pedido) objeto);
+            }else if(objeto instanceof Producto && search(lstPedidos,objeto)){
+                System.out.printf("El pedido %s ya existe en la lista\n", ((Pedido) objeto).getPedidoId());}
+            }
+        }
+
+    protected <T> void add_Objects(T... objeto){
+        for(int i=0;i<objeto.length;i++){
+            if(objeto[i] instanceof Producto){
+                if(!search(lstProductos,objeto[i])){
+                    this.lstProductos.add((Producto) objeto[i]);
+                }else{
+                    System.out.printf("El producto %s ya existe en la lista\n", ((Producto) objeto[i]).getNombre());
+            }}if(objeto[i] instanceof Categoria){
+                if(search(lstCategorias,objeto[i])){
+                    this.lstCategorias.add((Categoria) objeto[i]);
+                }else{
+                    System.out.printf("La categoria %s ya existe en la lista\n", ((Categoria) objeto[i]).getNombre());
+            }}if(objeto[i] instanceof Proveedor){
+                if(search(lstProveedores,objeto[i])){
+                    this.lstProveedores.add((Proveedor) objeto[i]);
+                }else{
+                    System.out.printf("El proveedor %s ya existe en la lista\n", ((Proveedor) objeto[i]).getNombre());
+            }}if(objeto[i] instanceof Pedido){
+                if(search(lstPedidos,objeto[i])){
+                    this.lstPedidos.add((Pedido) objeto[i]);
+                }else{
+                    System.out.printf("El pedido %s ya existe en la lista\n", ((Pedido) objeto[i]).getPedidoId());
+                }
             }
         }
     }
@@ -212,42 +246,13 @@ public final class Administrador extends Usuario implements Searchable, Findable
 protected <T> void delete(T... objectToDelete){//El metodo para eliminar un usuario. Es void pero se debe tal vez cambiar
         objectToDelete = null;
     }
-    
-    protected <T> T retrieve(List<T> lst){
-        for(T object: lst){
-            if(object instanceof Producto){
-                //((Producto) object).
-            }
-        }
-        return null;
-    }
-   /* 
-    @Override
-    public <T> String search(Collection<T> lstObjects, String toSearch) throws NullPointerException{
-        String match = "";
-        Iterator lstIt;
-        for(T object: lstObjects){
-            do{
-                lstIt.next();
-            }while(lstIt.hasNext())
-        if(object instanceof Producto){
-           if(!toSearch.equals(((Producto) object).getNombre())){
-               System.out.println(toSearch + " no fue encontrado.");
-               continue;
-           }
-            match = ("Hay " + toSearch + " disponible.");
-        }
-        }
-        return match;
-        }
-    */
 
     public boolean getFoundObject() {
         return foundObject;
     }
 
-    public Producto getProducto() {
-        return producto;
+    public String getProducto() {
+        return producto.getNombre();
     }
 
     public void setProducto(Producto producto) {
