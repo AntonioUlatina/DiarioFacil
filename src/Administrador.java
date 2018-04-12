@@ -276,22 +276,22 @@ protected <T> void delete(T... objectToDelete){//El metodo para eliminar un usua
             if((object instanceof Producto && toSearch.equals(((Producto) object).getNombre()))){
                 this.foundObject = true;
                 this.producto = (Producto) object;
-                System.out.println(toSearch + " se encuentra en la lista.");
+//                System.out.println(toSearch + " se encuentra en la lista.");
                 break;
             }
             if((object instanceof Categoria && toSearch.equals(((Categoria) object).getNombre()))){
                 this.foundObject = true;
-                System.out.println(toSearch + " se encuentra en la lista.");
+//                System.out.println(toSearch + " se encuentra en la lista.");
                 break;
             }
             if((object instanceof Proveedor && toSearch.equals(((Proveedor) object).getNombre()))){
                 this.foundObject = true;
-                System.out.println(toSearch + " se encuentra en la lista.");
+//                System.out.println(toSearch + " se encuentra en la lista.");
                 break;
             }
             if((object instanceof Pedido && toSearch.equals(((Pedido) object).getPedidoId()))){
                 this.foundObject = true;
-                System.out.println(toSearch + " se encuentra en la lista.");
+//                System.out.println(toSearch + " se encuentra en la lista.");
                 break;
             }
         }

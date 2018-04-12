@@ -19,7 +19,7 @@ public class Carrito {
     private List<Combo> lstCombos = new ArrayList<>();
     private Cliente cliente;
     private boolean foundItem;
-
+        int i = 0;
     public Carrito() {
     }
 
@@ -62,47 +62,23 @@ public class Carrito {
         this.cliente = cliente;
     }
 
-    public <T> void addItem(Item toAdd) {
-        if (searchItem(this.lstItems, toAdd)) {
-            System.out.printf("Este %s ya habia sido anadido al carrito", toAdd);
+    public void addItem(Item... toAdd) {
+        for(Item item: toAdd){
+        if(searchItem(item)) {
+            System.out.printf("Este %s ya habia sido agregado al carrito\n", item.getClass().getName());
         } else {
-            lstItems.add(toAdd);
-        }
-    }
-
-    public boolean searchItem(Collection<Item> lstItems, Item toSearch) throws NullPointerException {
-        try {
-            for (Item item : lstItems) {
-                
-                    if (item instanceof Producto) {
-                        this.foundItem = true;
-                        System.out.println("El producto " + ((Producto) item).getNombre() + " se encuentra en la lista.");
-                        break;
-                    }
-                    if (item instanceof Combo) {
-                        this.foundItem = true;
-                        System.out.println("El combo " + ((Combo) item).getNombre() + " se encuentra en la lista.");
-                        break;
-                    }
-                    if (item instanceof Promocion) {
-                        this.foundItem = true;
-                        System.out.println("La promocion " + ((Promocion) item).getNombre() + " se encuentra en la lista.");
-                        break;
-                    }
-
-                
-                if (!this.foundItem) {
-                    System.out.println(toSearch + " no esta en la lista");
+            lstItems.add(item);
+            System.out.printf("Agregaste %s al carrito\n", item.getClass().getName());
                 }
-            }
-            return this.foundItem;
-        } finally {
-            this.foundItem = false;
+            } 
         }
+
+    public boolean searchItem(Item item) throws ClassCastException, NullPointerException {
+                        return lstItems.contains(item);
     }
 
     public void deleteItem(Collection<Item> lstItems, Item toDelete) {//El metodo para eliminar un producto
-        if (searchItem(lstItems, toDelete)) {
+        if (searchItem(toDelete)) {
             lstItems.remove(toDelete);
         }
     }
