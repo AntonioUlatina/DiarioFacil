@@ -24,6 +24,7 @@ public class TesterMenu {
      * @throws java.io.IOException
      */
     public static boolean noSalir = true;
+
     public static void main(String[] args) throws IOException {
         // TODO code application logic here
         out.println("Diario Facil");
@@ -35,7 +36,7 @@ public class TesterMenu {
             mostrarMenu();
             opc = leerOpcion();
             noSalir = ejecutarAccion(opc);
-        } while(noSalir);
+        } while (noSalir);
     }
 
     public static void mostrarMenu() {
@@ -67,7 +68,7 @@ public class TesterMenu {
 
             case 1: //Opcion Agregar Producto
 
-                login();
+                noSalir = login();
                 break;
 
             case 2:// Modificar Producto
@@ -77,7 +78,7 @@ public class TesterMenu {
                 break;
             case 3://Salir
                 out.println("Gracias por usar Diario Facil");
-                noSalir = true;
+                noSalir = false;
                 break;
 
             default: //Cualquier otro valor dado por el usuario se considera inválido
@@ -89,7 +90,7 @@ public class TesterMenu {
         return noSalir;
     }
 
-    public static void login() throws IOException {
+    public static boolean login() throws IOException {
         Scanner leer = new Scanner(System.in);
         //CARGA DE DATOS
         DiarioFacil df = new DiarioFacil();
@@ -133,6 +134,7 @@ public class TesterMenu {
         int cod;
         out.println("1. Como administrador\n");
         out.println("2. Como usuario\n");
+        out.println("3. Salir\n");
         out.println("Digite la opcion: \n");
         cod = leer.nextInt();
         switch (cod) {
@@ -145,26 +147,80 @@ public class TesterMenu {
                     if (user.equals(usuario.getNombre()) && pass.equals(usuario.getContraseña())) {
                         if (usuario instanceof Administrador) {
                             mostrarMenuAdministrador();
-                            noSalir = false;
-                        }
-                        else{
+                        } else {
                             out.println("Escogiste la opcion incorrecta. Por favor escoja otra vez");
                             login();
-                            noSalir = false;
+                            break;
                         }
                     }
                 }
                 break;
+            case 2:
+                out.println("Digite su usuario: \n");
+                String user1 = in.readLine();
+                out.println("Digite su contraseña: \n");
+                String pass1 = in.readLine();
+                for (Usuario usuario : df.getLstUsuarios()) {
+                    if (user1.equals(usuario.getNombre()) && pass1.equals(usuario.getContraseña())) {
+                        if (usuario instanceof Cliente) {
+                            mostrarMenuCliente();
+                        } else {
+                            out.println("Escogiste la opcion incorrecta. Por favor escoja otra vez");
+                            login();
+                        }
+                    }
+                }
+                break;
+            case 3:
+                mostrarMenu();
+                break;
+            default:
+                out.println("Valor no valido");
+                break;
         }
-    }
+        return login();
+        }
+    
 
     public static void registro() throws IOException {
         out.println("Digite un nombre : ");
 
     }
 
-    public static void mostrarMenuAdministrador() {
+    public static void mostrarMenuAdministrador() throws IOException {
         out.println("Hola administrador");
+        Scanner leer = new Scanner(System.in);
+        int cod;
+        out.println("1. Mantenimiento Producto\n");
+        out.println("2. Mantenimiento Categoria\n");
+        out.println("3. Mantenimiento Clientes\n");
+        out.println("4. Mantenimiento de Proveedores\n");
+        out.println("5. Mantenimiento de Pedidos\n");
+        out.println("6. Salir");
+        out.println("Digite la opcion: ");
+        cod = leer.nextInt();
+        switch (cod) {
+            case 1:
+              mantenimientoProducto();
+        }
+    }
+
+    public static void mantenimientoProducto() {
+        Scanner leer = new Scanner(System.in);
+        int cod;
+        out.println("1. Agregar Producto\n");
+        out.println("2. Modificar Producto\n");
+        out.println("3. Eliminar Producto\n");
+        out.println("Digite la opcion: ");
+        cod = leer.nextInt();
+        switch (cod) {
+            case 1:
+                
+        }
+    }
+
+    public static void mostrarMenuCliente() {
+        out.println("Hola cliente");
     }
 
 }
