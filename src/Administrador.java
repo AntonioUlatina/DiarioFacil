@@ -3,14 +3,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 /**
  *
@@ -126,11 +119,11 @@ public final class Administrador extends Usuario implements Searchable, Findable
         for(Generic objeto: Objetos){
             if(objeto instanceof Producto){
                 if(!search(lstProductos,objeto)) this.lstProductos.add((Producto) objeto); System.out.printf("El producto %s ya existe en la lista\n", ((Producto) objeto).getNombre());
-            }else if (objeto instanceof Categoria){
+            }if (objeto instanceof Categoria){
                 if(!search(lstCategorias,objeto)) this.lstCategorias.add((Categoria) objeto); System.out.printf("La categoria %s ya existe en la lista\n", ((Categoria) objeto).getNombre());
-            }else if (objeto instanceof Proveedor){
+            }if (objeto instanceof Proveedor){
                 if(!search(lstProveedores,objeto)) this.lstProveedores.add((Proveedor) objeto); System.out.printf("El proveedor %s ya existe en la lista\n", ((Proveedor) objeto).getNombre());
-            }else if (objeto instanceof Pedido){
+            }if (objeto instanceof Pedido){
                 if(!search(lstPedidos,objeto)) this.lstPedidos.add((Pedido) objeto); System.out.printf("El pedido %s ya existe en la lista\n", ((Pedido) objeto).getPedidoId());
             }
         }
@@ -311,30 +304,3 @@ protected <T> void delete(T... objectToDelete){//El metodo para eliminar un usua
         return foundObject;
     }
 }
-        /*
-        System.out.println("Queso".equals("Qeso"));
-        
-        String temp = null;
-        Boolean b = null;
-        System.out.println("Boolean " + b + "  ");
-       
-        for(T object: lstObjects){
-        //temp = lstObjects.contains(toSearch) ? object : null;
-        System.out.println(((Producto) object).getNombre());
-        if(object instanceof Producto){
-            //if(((Producto) object).getNombre().contains(toSearch)){
-            
-            if(toSearch.equals(((Producto) object).getNombre())){
-                return (T) ("Hay " + ((Producto) object).getNombre() + " disponible.");
-            }
-        }else{
-                temp = "No esta en la lista";
-            }
-        //temp = toSearch.equals(((Producto) object).getNombre()) ? ((Producto) object).getNombre() : "No esta en la lista";
-        //System.out.print(toSearch.equals(((Producto) object).getNombre()));
-        }
-        return (T) temp;
-    
-    }
-*/
-

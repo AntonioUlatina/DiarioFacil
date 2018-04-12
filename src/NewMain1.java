@@ -26,6 +26,7 @@ public class NewMain1 {
         Producto p2 = new Producto();
         Producto p3 = new Producto();
         Categoria c = new Categoria("wines", a.getLstProductos());
+        System.out.println(a.search(a.getLstProductos(), p1));
         a.addObjects(p1, p2, p3, c);
         a.create("producto", "Queso", "Galleta", 3);
         a.create("producto", "milk", "lacteo", 10);
