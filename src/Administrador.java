@@ -60,7 +60,7 @@ public final class Administrador extends Usuario implements Searchable, Findable
     }
     //In this case <T> doesnt work well with varArgs
     
-    protected <T> void create(String nuevo, T... varArgs){
+    public <T> void create(String nuevo, T... varArgs){
         switch (nuevo){
             case "producto":
                 if(!search(lstProductos, nuevo)){

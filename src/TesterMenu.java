@@ -95,41 +95,18 @@ public class TesterMenu {
         //CARGA DE DATOS
         DiarioFacil df = new DiarioFacil();
 
-        Usuario cliente1 = new Cliente();
-        cliente1.setCedula("12345678");
-        cliente1.setNombre("Mateo Marin");
-        cliente1.setTelefono("84863651");
-        cliente1.setContraseña("vaca94");
+        Usuario cliente1 = new Cliente("Mateo Marin", "mateo123", "12345678", "12345679", "Heredia");
 
-        Usuario cliente2 = new Cliente();
-        cliente2.setCedula("117580729");
-        cliente2.setNombre("Luis Fernandez");
-        cliente2.setTelefono("83730387");
-        cliente2.setContraseña("reloj123");
+        Usuario cliente2 = new Cliente("Luis Fernandez", "luis123", "12345679", "9876543", "San Jose");
 
-        Usuario cliente3 = new Cliente();
-        cliente3.setCedula("115689435");
-        cliente3.setNombre("Antonio Alvarez");
-        cliente3.setTelefono("88987432");
-        cliente3.setContraseña("gallina23");
+        Usuario cliente3 = new Cliente("Antonio Alvarez", "antonio123", "12345677", "9786545", "Alajuela");
 
-        Usuario administrador1 = new Administrador();
-        administrador1.setNombre("Jaime");
-        administrador1.setCedula("123456789");
-        administrador1.setTelefono("22253625");
-        administrador1.setContraseña("chirulo76");
-
-        Usuario administrador2 = new Administrador();
-        administrador1.setNombre("Pedro");
-        administrador1.setCedula("987654321");
-        administrador1.setTelefono("88988754");
-        administrador1.setContraseña("pedro123");
+        Usuario adm = new Administrador("Pedro Marin", "pedro123", "123123123", "34534534", "Caratago");
 
         df.agregarUsuario(cliente1);
         df.agregarUsuario(cliente2);
         df.agregarUsuario(cliente3);
-        df.agregarUsuario(administrador1);
-        df.agregarUsuario(administrador2);
+        df.agregarUsuario(adm);
 
         int cod;
         out.println("1. Como administrador\n");
@@ -179,8 +156,7 @@ public class TesterMenu {
                 break;
         }
         return login();
-        }
-    
+    }
 
     public static void registro() throws IOException {
         out.println("Digite un nombre : ");
@@ -201,21 +177,84 @@ public class TesterMenu {
         cod = leer.nextInt();
         switch (cod) {
             case 1:
-              mantenimientoProducto();
+                mantenimientoProducto();
+                break;
+            case 2:
+                mantenimientoCategoria();
+                break;
+            case 3:
+                //mantenimientoClientes();
+                break;
+            case 4:
+                //mantenimientoProveedores();
+                break;
+            case 5:
+                //mantenimientoPedidos();
+                break;
+            case 6:
+                login();
+                break;
         }
     }
 
-    public static void mantenimientoProducto() {
+    public static void mantenimientoProducto() throws IOException {
         Scanner leer = new Scanner(System.in);
         int cod;
         out.println("1. Agregar Producto\n");
         out.println("2. Modificar Producto\n");
         out.println("3. Eliminar Producto\n");
+        out.println("4. Salir\n");
         out.println("Digite la opcion: ");
         cod = leer.nextInt();
         switch (cod) {
+
             case 1:
-                
+                static <T> void;
+                break;
+
+            case 2:
+                break;
+
+            case 3:
+                break;
+            case 4:
+                mostrarMenuAdministrador();
+                break;
+            default:
+                out.println("Opcion no valida");
+        }
+        if (cod != T) {
+            mantenimientoProducto();
+        }
+    }
+
+    public static void mantenimientoCategoria() throws IOException {
+        Scanner leer = new Scanner(System.in);
+        int cod;
+        out.println("1. Agregar Categoria\n");
+        out.println("2. Modificar Categoria\n");
+        out.println("3. Eliminar Categoria\n");
+        out.println("4. Salir\n");
+        out.println("Digite la opcion: ");
+        cod = leer.nextInt();
+        switch (cod) {
+
+            case 1:
+                break;
+
+            case 2:
+                break;
+
+            case 3:
+                break;
+            case 4:
+                mostrarMenuAdministrador();
+                break;
+            default:
+                out.println("Opcion no valida");
+        }
+        if (cod != 4) {
+            mantenimientoProducto();
         }
     }
 

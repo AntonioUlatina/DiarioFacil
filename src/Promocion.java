@@ -21,19 +21,16 @@ class Promocion extends Item{
         this.nombre = nombre;
     }
 
-    public Promocion(Date diaPromocion, Period periodoOferta, int descuento, int precioPromo, String nombre, int numeroConsecutivo, int cantidad) {
+    public Promocion(Date diaPromocion, Period periodoOferta, String nombre, int numeroConsecutivo, int cantidad) {
         super(numeroConsecutivo, cantidad);
         this.diaPromocion = diaPromocion;
         this.periodoOferta = periodoOferta;
-        this.descuento = descuento;
-        this.precioPromo = precioPromo;
         this.nombre = nombre;
     }
     private List<Item> lstItems = new ArrayList<>();
     private Date diaPromocion;
     private Period periodoOferta;
-    private int descuento;
-    private int precioPromo;
+
     private String nombre;
 
     public String getNombre() {
@@ -46,12 +43,10 @@ class Promocion extends Item{
     
     public Promocion(){}
     
-    public Promocion(List lstItems, Date diaPromocion, Period periodoOferta, int descuento, int precioPromo){
+    public Promocion(List lstItems, Date diaPromocion, Period periodoOferta){
         this.lstItems = lstItems;
         this.diaPromocion = diaPromocion;
         this.periodoOferta = periodoOferta;
-        this.descuento = descuento;
-        this.precioPromo = precioPromo;
     }
 
     public List<Item> getLstItems() {
@@ -77,21 +72,14 @@ class Promocion extends Item{
     public void setPeriodoOferta(Period periodoOferta) {
         this.periodoOferta = periodoOferta;
     }
-
-    public int getDescuento() {
-        return descuento;
-    }
-
-    public void setDescuento(int descuento) {
-        this.descuento = descuento;
-    }
-
-    public int getPrecioPromo() {
-        return precioPromo;
-    }
-
-    public void setPrecioPromo(int precioPromo) {
-        this.precioPromo = precioPromo;
-    }
     
+    
+    public double Descuento (){
+        double montoPromo = 0.0;
+        for (Item item : this.lstItems) {
+            montoPromo = montoPromo + ((Producto) item).getPrecio();
+        }
+        return montoPromo;
+
+    }
 }

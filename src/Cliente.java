@@ -24,10 +24,6 @@ public class Cliente extends Usuario {
         this.direccion = direccion;
     }
 
-    Cliente(String mateo_Marin) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
     public String getDireccion() {
         return direccion;
     }
