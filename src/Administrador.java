@@ -23,11 +23,11 @@ public final class Administrador extends Usuario implements Searchable, Findable
 
     //In this case <T> doesnt work well with varArgs
     
-    public <T> void create(String nuevo, T... varArgs){
+    protected <T> void create(String nuevo, T... varArgs){
         switch (nuevo){
             case "producto":
                 if(!search(dF.getLstProductos(), nuevo)){
-                dF.getLstProductos().add(new Producto((String) varArgs[0],(String) varArgs[1],(Integer) varArgs[2]), (String) varArgs[3]);
+                dF.getLstProductos().add(new Producto((String) varArgs[0],(String) varArgs[1],(Integer) varArgs[2],(String) varArgs[3]));
                 }else{
                     System.out.println("Este producto ya existe");
                 }

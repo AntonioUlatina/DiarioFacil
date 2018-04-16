@@ -36,7 +36,7 @@ class Producto extends Item/*implements Searchable*/{
         this.nombre = nombre;
     }
 
-    public Producto(String nombre, String descripcion, int precio, String categoria) {
+    public Producto(String nombre, String descripcion, Integer precio, String categoria) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.precio = precio;

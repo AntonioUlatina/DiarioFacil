@@ -30,8 +30,8 @@ public class NewMain1 {
         System.out.println(a.search(dF.getLstProductos(), p1));
         a.addObjects(p1, p2, p3, c);
         System.out.println(a.search(dF.getLstProductos(), p1));
-        a.create("producto", "Queso", "Galleta", 3);
-        a.create("producto", "milk", "lacteo", 10);
+        a.create("producto", "Queso", "Galleta", 3, "lacteos");
+        a.create("producto", "milk", "lacteo", 10, "lacteos");
         a.create("categoria", "Lacteos", dF.getLstProductos());
         a.addObjects(p2, p3);
         //System.out.println(a.getLstCategorias());
