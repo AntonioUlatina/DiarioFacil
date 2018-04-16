@@ -15,6 +15,10 @@ class Producto extends Item/*implements Searchable*/{
     private String nombre;
     private String descripcion;
     private String categoria;
+    private int precio;
+    private int stockMin;
+    private int stockMax;
+    private boolean foundProducto;
 
     public Producto(String nombre, String descripcion, String categoria, int precio, int stockMin, int numeroConsecutivo, int cantidad) {
         super(numeroConsecutivo, cantidad);
@@ -24,10 +28,7 @@ class Producto extends Item/*implements Searchable*/{
         this.precio = precio;
         this.stockMin = stockMin;
     }
-    private int precio;
-    private int stockMin;
-    private int stockMax;
-    private boolean foundProducto;
+
     
     Producto (){}
     

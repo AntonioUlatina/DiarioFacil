@@ -138,17 +138,5 @@ public class DiarioFacil {
         return "DiarioFacil{" + "lstProductos=" + lstProductos + ", lstCategorias=" + lstCategorias + ", lstPromociones=" + lstPromociones + ", lstCombos=" + lstCombos + ", lstOrdenes=" + lstOrdenes + ", lstUsuarios=" + lstUsuarios + ", lstProveedores=" + lstProveedores + ", lstPedidos=" + lstPedidos + '}';
     }
     
-    public void CargarUsuarios(){
-        Usuario cliente = new Cliente ("Mateo Marin","1234","1111","11111","Heredia");
-        Usuario cliente1 = new Cliente ("Luis Fernandez","5678","2222","22222","San Jose");
-        //Usuario administrador = new Administrador ("Antonio Alvarez","9012","3333","33333","Cartago");
-        
-        this.agregarUsuario(cliente);
-        this.agregarUsuario(cliente1);
-        
-    }
-    
-    public void CargaProductos(){
-        
-    }
+
 }

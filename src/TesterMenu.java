@@ -14,18 +14,26 @@ import java.util.Scanner;
  *
  * @author Mateo Marin
  */
-
 public class TesterMenu {
-        static DiarioFacil df = new DiarioFacil();
 
-        static Usuario cliente1 = new Cliente("Mateo Marin", "mateo123", "12345678", "12345679", "Heredia");
-
-        static Usuario cliente2 = new Cliente("Luis Fernandez", "luis123", "12345679", "9876543", "San Jose");
-
-        static Usuario cliente3 = new Cliente("Antonio Alvarez", "antonio123", "12345677", "9786545", "Alajuela");
-
-        static Usuario adm = new Administrador("Pedro Marin","pedro123","123445543","342423");
-
+//************************************************
+//          CARGA INICIAL DE USUARIOS
+//************************************************
+    static DiarioFacil df = new DiarioFacil();
+    static Usuario cliente1 = new Cliente("Mateo Marin", "mateo123", "12345678", "12345679", "Heredia");
+    static Usuario cliente2 = new Cliente("Luis Fernandez", "luis123", "12345679", "9876543", "San Jose");
+    static Usuario cliente3 = new Cliente("Antonio Alvarez", "antonio123", "12345677", "9786545", "Alajuela");
+    static Usuario adm = new Administrador("Pedro Marin", "pedro123", "123445543", "342423");
+//************************************************
+//          FIN DE CARGA USUARIOS
+//************************************************
+    
+//************************************************
+//          CARGA INICIAL DE PRODUCTOS
+//************************************************
+    //static Producto pro1 = new Producto("Leche","De vaca",400);
+//************************************************
+//************************************************
     static BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
     static PrintStream out = System.out;	// variables objetos in y out para
 
@@ -39,7 +47,6 @@ public class TesterMenu {
         // TODO code application logic here
         out.println("Diario Facil");
         int opc;
-
         boolean noSalir;
 
         do {
@@ -101,8 +108,7 @@ public class TesterMenu {
     }
 
     public static boolean login() throws IOException {
-                //CARGA DE DATOS
-
+        //CARGA DE DATOS
 
         df.agregarUsuario(cliente1);
         df.agregarUsuario(cliente2);
@@ -163,7 +169,9 @@ public class TesterMenu {
         out.println("Digite un nombre : ");
 
     }
-
+//************************************************
+//          INICIA FLUJO DE MENU ADMINISTRADOR
+//************************************************
     public static void mostrarMenuAdministrador() throws IOException {
         out.println("Hola administrador");
         Scanner leer = new Scanner(System.in);
@@ -172,8 +180,7 @@ public class TesterMenu {
         out.println("2. Mantenimiento Categoria\n");
         out.println("3. Mantenimiento Clientes\n");
         out.println("4. Mantenimiento de Proveedores\n");
-        out.println("5. Mantenimiento de Pedidos\n");
-        out.println("6. Salir");
+        out.println("5. Salir");
         out.println("Digite la opcion: ");
         cod = leer.nextInt();
         switch (cod) {
@@ -184,15 +191,12 @@ public class TesterMenu {
                 mantenimientoCategoria();
                 break;
             case 3:
-                //mantenimientoClientes();
+                mantenimientoClientes();
                 break;
             case 4:
-                //mantenimientoProveedores();
+                mantenimientoProveedores();
                 break;
             case 5:
-                //mantenimientoPedidos();
-                break;
-            case 6:
                 login();
                 break;
         }
@@ -201,6 +205,7 @@ public class TesterMenu {
     public static void mantenimientoProducto() throws IOException {
         Scanner leer = new Scanner(System.in);
         int cod;
+        
         out.println("1. Agregar Producto\n");
         out.println("2. Modificar Producto\n");
         out.println("3. Eliminar Producto\n");
@@ -210,9 +215,21 @@ public class TesterMenu {
         switch (cod) {
 
             case 1:
-      
-                break;
+                String nombre;
+                String descripcion;
+                int precio;
+                out.println("Digite un nombre: \n");
+                leer.nextLine();
+                nombre = leer.nextLine();
+                out.println("Digite una descripcion: \n");
+                leer.nextLine();
+                descripcion = leer.nextLine();
+                out.println("Digite: \n");
+                leer.nextInt();
+                precio = leer.nextInt();
+                ((Administrador) adm).create("Producto", nombre, descripcion, precio);
 
+                break;
             case 2:
                 break;
 
@@ -241,6 +258,11 @@ public class TesterMenu {
         switch (cod) {
 
             case 1:
+                String nombre;
+                out.println("Digite un nombre: \n");
+                leer.nextLine();
+                nombre = leer.nextLine();
+                
                 break;
 
             case 2:
@@ -259,6 +281,74 @@ public class TesterMenu {
         }
     }
 
+    public static void mantenimientoClientes() throws IOException {
+Scanner leer = new Scanner(System.in);
+        int cod;
+        out.println("1. Modificar Cliente\n");
+        out.println("2. Eliminar Cliente\n");
+        out.println("3. Salir\n");
+        out.println("Digite la opcion: ");
+        cod = leer.nextInt();
+        switch (cod) {
+
+            case 1:
+                break;
+
+            case 2:
+                break;
+
+            case 3:
+                mostrarMenuAdministrador();
+                break;
+            default:
+                out.println("Opcion no valida");
+        }
+        if (cod != 3) {
+            mantenimientoClientes();
+        }
+    }
+
+    public static void mantenimientoProveedores() throws IOException {
+        Scanner leer = new Scanner(System.in);
+        int cod;
+        out.println("1. Agregar Proveedor\n");
+        out.println("2. Modificar Proveedor\n");
+        out.println("3. Eliminar Proveedor\n");
+        out.println("4. Hacer pedido\n");
+        out.println("5. Salir\n");
+        out.println("Digite la opcion: ");
+        cod = leer.nextInt();
+        switch (cod) {
+
+            case 1:
+                break;
+
+            case 2:
+                break;
+
+            case 3:
+                break;
+            case 4:
+                break;
+            case 5:
+                mostrarMenuAdministrador();
+                break;
+            default:
+                out.println("Opcion no valida");
+        }
+        if (cod != 4) {
+            mantenimientoProveedores();
+        }
+    }
+//************************************************
+//          TERMINA FLUJO DE MENU ADMINISTRADOR
+//************************************************
+
+//************************************************
+//          INICIA FLUJO DE MENU CLIENTE
+//************************************************
+    
+    
     public static void mostrarMenuCliente() {
         out.println("Hola cliente");
     }
