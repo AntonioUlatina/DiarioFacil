@@ -21,23 +21,23 @@ public class NewMain1 {
      */
     public static void main(String[] args) {
         //printStar(10);
+        DiarioFacil dF = new DiarioFacil();
         Administrador a = new Administrador();
         Producto p1 = new Producto("n");
         Producto p2 = new Producto("u");
         Producto p3 = new Producto("t");
-        Categoria c = new Categoria("wines", a.getLstProductos());
-        System.out.println(a.search(a.getLstProductos(), p1));
+        Categoria c = new Categoria("wines", dF.getLstProductos());
+        System.out.println(a.search(dF.getLstProductos(), p1));
         a.addObjects(p1, p2, p3, c);
-        System.out.println(a.search(a.getLstProductos(), p1));
+        System.out.println(a.search(dF.getLstProductos(), p1));
         a.create("producto", "Queso", "Galleta", 3);
         a.create("producto", "milk", "lacteo", 10);
-        a.create("categoria", "Lacteos", a.getLstProductos());
-        a.add_Objects(p2, p3);
+        a.create("categoria", "Lacteos", dF.getLstProductos());
+        a.addObjects(p2, p3);
         //System.out.println(a.getLstCategorias());
-        a.searchObject(a.getLstCategorias(), "Lacteos");
-        a.searchObject(a.getLstProductos(), "milk");
-        System.out.println(a.getProducto());
-        a.search(a.getLstProductos(), "Queso");
+        a.search(dF.getLstCategorias(), "Lacteos");
+        a.search(dF.getLstProductos(), "milk");
+        a.search(dF.getLstProductos(), "Queso");
         //System.out.println(a.getProducto());
         //System.out.println(a.search(a.getLstCategorias(), "Lacteos"));
         //System.out.println(a.getFoundObject());

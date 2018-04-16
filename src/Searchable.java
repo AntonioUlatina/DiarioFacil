@@ -13,8 +13,7 @@ import java.util.Collection;
  * @param <T>
  */
 
-public interface Searchable/*<T>*/ {
+public interface Searchable {
     
-    <T> boolean searchObject(Collection<T> lstObjects, String toSearch) throws ClassCastException, NullPointerException;
     <T> boolean search(Collection lstObjects, T object) throws ClassCastException, NullPointerException;
 }

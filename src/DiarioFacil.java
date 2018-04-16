@@ -13,15 +13,27 @@ import java.util.List;
  * @author Mateo Marin
  */
 public class DiarioFacil {
-    private String nombre;
-    private List<Producto> lstProductos = new ArrayList<>();
-    private List<Categoria> lstCategorias = new ArrayList<>();
-    private List<Promocion> lstPromociones = new ArrayList<>();
-    private List<Combo> lstCombos = new ArrayList<>();
-    private List<Orden> lstOrdenes = new ArrayList<>();
-    private List<Usuario> lstUsuarios = new ArrayList<>();
-    private List<Proveedor> lstProveedores = new ArrayList<>();
-    private List<Pedido> lstPedidos = new ArrayList<>();
+    private List<Producto> lstProductos;
+    private List<Categoria> lstCategorias;
+    private List<Promocion> lstPromociones;
+    private List<Combo> lstCombos;
+    private List<Orden> lstOrdenes;
+    private List<Usuario> lstUsuarios;
+    private List<Proveedor> lstProveedores;
+    private List<Pedido> lstPedidos;
+    
+    {
+    lstProductos = new ArrayList<>();
+    lstCategorias = new ArrayList<>();
+    lstPromociones = new ArrayList<>();
+    lstCombos = new ArrayList<>();
+    lstOrdenes = new ArrayList<>();
+    lstUsuarios = new ArrayList<>();
+    lstProveedores = new ArrayList<>();
+    lstPedidos = new ArrayList<>();
+    }
+
+    public DiarioFacil() {}
     
     public void agregarProducto(Producto producto) {
         this.lstProductos.add(producto);
@@ -51,14 +63,6 @@ public class DiarioFacil {
     }
     public void agregarPedido(Pedido pedido){
         this.lstPedidos.add(pedido);
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
     }
 
     public List<Producto> getLstProductos() {
@@ -131,7 +135,7 @@ public class DiarioFacil {
         for (Usuario lstUsuario : lstUsuarios) {
             todos.concat(lstUsuario.getNombre());
         }
-        return "DiarioFacil{" + "nombre=" + nombre + ", lstProductos=" + lstProductos + ", lstCategorias=" + lstCategorias + ", lstPromociones=" + lstPromociones + ", lstCombos=" + lstCombos + ", lstOrdenes=" + lstOrdenes + ", lstUsuarios=" + lstUsuarios + ", lstProveedores=" + lstProveedores + ", lstPedidos=" + lstPedidos + '}';
+        return "DiarioFacil{" + "lstProductos=" + lstProductos + ", lstCategorias=" + lstCategorias + ", lstPromociones=" + lstPromociones + ", lstCombos=" + lstCombos + ", lstOrdenes=" + lstOrdenes + ", lstUsuarios=" + lstUsuarios + ", lstProveedores=" + lstProveedores + ", lstPedidos=" + lstPedidos + '}';
     }
     
     public void CargarUsuarios(){

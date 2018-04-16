@@ -14,7 +14,17 @@ import java.util.Scanner;
  *
  * @author Mateo Marin
  */
+
 public class TesterMenu {
+        static DiarioFacil df = new DiarioFacil();
+
+        static Usuario cliente1 = new Cliente("Mateo Marin", "mateo123", "12345678", "12345679", "Heredia");
+
+        static Usuario cliente2 = new Cliente("Luis Fernandez", "luis123", "12345679", "9876543", "San Jose");
+
+        static Usuario cliente3 = new Cliente("Antonio Alvarez", "antonio123", "12345677", "9786545", "Alajuela");
+
+        static Usuario adm = new Administrador("Pedro Marin","pedro123","123445543","342423");
 
     static BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
     static PrintStream out = System.out;	// variables objetos in y out para
@@ -91,23 +101,14 @@ public class TesterMenu {
     }
 
     public static boolean login() throws IOException {
-        Scanner leer = new Scanner(System.in);
-        //CARGA DE DATOS
-        DiarioFacil df = new DiarioFacil();
+                //CARGA DE DATOS
 
-        Usuario cliente1 = new Cliente("Mateo Marin", "mateo123", "12345678", "12345679", "Heredia");
-
-        Usuario cliente2 = new Cliente("Luis Fernandez", "luis123", "12345679", "9876543", "San Jose");
-
-        Usuario cliente3 = new Cliente("Antonio Alvarez", "antonio123", "12345677", "9786545", "Alajuela");
-
-        Usuario adm = new Administrador("Pedro Marin", "pedro123", "123123123", "34534534", "Caratago");
 
         df.agregarUsuario(cliente1);
         df.agregarUsuario(cliente2);
         df.agregarUsuario(cliente3);
         df.agregarUsuario(adm);
-
+        Scanner leer = new Scanner(System.in);
         int cod;
         out.println("1. Como administrador\n");
         out.println("2. Como usuario\n");
@@ -209,7 +210,7 @@ public class TesterMenu {
         switch (cod) {
 
             case 1:
-                static <T> void;
+      
                 break;
 
             case 2:
@@ -223,7 +224,7 @@ public class TesterMenu {
             default:
                 out.println("Opcion no valida");
         }
-        if (cod != T) {
+        if (cod != 4) {
             mantenimientoProducto();
         }
     }
