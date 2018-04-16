@@ -35,29 +35,12 @@ class Producto extends Item/*implements Searchable*/{
     public Producto(String nombre) {
         this.nombre = nombre;
     }
-    
-Producto(String nombre, String descripcion, int precio,int stockMin,int stockMax){       
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.precio = precio;
-        this.stockMin = stockMin;
-        this.stockMax = stockMax;
-    }
-    public Producto(String nombre, String descripcion, int precio, int stockMin, int stockMax, boolean foundProducto, int numeroConsecutivo, int cantidad) {
-        super(numeroConsecutivo, cantidad);
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.precio = precio;
-        this.stockMin = stockMin;
-        this.stockMax = stockMax;
-        this.foundProducto = foundProducto;
-    }
-    
 
-    public Producto(String nombre, String descripcion, int precio) {
+    public Producto(String nombre, String descripcion, int precio, String categoria) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.precio = precio;
+        this.categoria = categoria;
     }
 
     public String getNombre() {
