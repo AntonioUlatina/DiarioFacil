@@ -53,6 +53,13 @@ class Combo extends Item{
         this.precioCombo = precioCombo;
     }
 
+    public Combo(int descuento, int precioCombo, String nombre, int cantidad) {
+        super(cantidad);
+        this.descuento = descuento;
+        this.precioCombo = precioCombo;
+        this.nombre = nombre;
+    }
+
     public Date getDiaPromocion() {
         return diaPromocion;
     }

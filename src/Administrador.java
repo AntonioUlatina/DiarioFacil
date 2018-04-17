@@ -179,7 +179,10 @@ public final class Administrador extends Usuario implements Findable{
     }
     
     protected void eliminarCliente(Cliente cliente) throws NullPointerException{//El metodo para eliminar un usuario. Es void pero se debe tal vez cambiar
-        cliente = null;
+        if(search(dF.getLstUsuarios(), cliente))
+            dF.getLstUsuarios().remove(cliente);
+        else
+            System.out.printf("Este %s no existe en el inventario\n", cliente.getNombre());
     }
     
     public void eliminarProducto(Producto producto){//El metodo para eliminar un producto
@@ -217,6 +220,14 @@ protected <T> void delete(T... objectToDelete){//El metodo para eliminar un usua
         for(Producto producto: lstProductos){
             if(toSearch.equalsIgnoreCase(producto.getNombre())){
                 return producto;
+            }
+        }
+        return null;
+    }
+        public Usuario searchCliente(Collection<Usuario> lstUsuarios, String toSearch) throws NullPointerException{
+        for(Usuario cliente: lstUsuarios){
+            if(toSearch.equalsIgnoreCase(cliente.getNombre())){
+                return cliente;
             }
         }
         return null;
