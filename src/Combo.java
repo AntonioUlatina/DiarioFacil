@@ -20,7 +20,7 @@ class Combo extends Item {
     private int descuento;
     private int precioCombo;
     private String nombre;
-    private List<Producto> lstProductoss = new ArrayList<>();
+    private List<Producto> lstProductos = new ArrayList<>();
 
     public String getNombre() {
         return nombre;
@@ -30,12 +30,12 @@ class Combo extends Item {
         this.nombre = nombre;
     }
 
-    public List<Producto> getLstProductoss() {
-        return lstProductoss;
+    public List<Producto> getLstProductos() {
+        return lstProductos;
     }
 
     public void setLstProductoss(List<Producto> lstProductoss) {
-        this.lstProductoss = lstProductoss;
+        this.lstProductos = lstProductoss;
     }
     
     
@@ -105,7 +105,7 @@ class Combo extends Item {
 
     public double Descuento() {
         double montoPromo = 0.0;
-        for (Producto producto : this.lstProductoss) {
+        for (Producto producto : this.lstProductos) {
             montoPromo = montoPromo + ((Producto) producto).getPrecio();
         }
         return montoPromo;

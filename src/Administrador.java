@@ -1,5 +1,7 @@
 import java.time.Instant;
 import java.time.Period;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
@@ -224,6 +226,18 @@ protected <T> void delete(T... objectToDelete){//El metodo para eliminar un usua
         }
         return null;
     }
+    
+    public Collection<Producto> searchProductCollection(Collection<Producto> lstProductos, String... toSearch) throws NullPointerException{
+        Collection<Producto> pCollection = new ArrayList<>();
+        for(Producto producto: lstProductos){
+            for(String str: toSearch)
+            if(str.equalsIgnoreCase(producto.getNombre())){
+                pCollection.add(producto);
+            }
+        }
+        return pCollection;
+    }
+    
         public Usuario searchCliente(Collection<Usuario> lstUsuarios, String toSearch) throws NullPointerException{
         for(Usuario cliente: lstUsuarios){
             if(toSearch.equalsIgnoreCase(cliente.getNombre())){
@@ -240,6 +254,26 @@ protected <T> void delete(T... objectToDelete){//El metodo para eliminar un usua
 
     @Override
     public Boolean foundProducto(Producto producto) {
-        return producto == null;
+        return producto != null;
+    }
+    Combo c = new Combo();
+    protected void crearCombo(String... producto){
+        
+        for(String str : producto){
+        if(foundProducto(searchProduct(dF.getLstProductos(), str)));
+        }
+            c.getLstProductos().addAll(searchProductCollection(dF.getLstProductos(), producto));
+
+    }
+    //Tester local para mi crearCombo
+    public static void main(String[] args){
+        Producto p1 = new Producto("carne");
+        Producto p2 = new Producto("leche");
+        DiarioFacil df = new DiarioFacil();
+        df.agregarProducto(p1);
+        df.agregarProducto(p2);
+        Administrador ad = new Administrador();
+        ad.crearCombo("leche","carne");
+        System.out.println(ad.c);
     }
 }
