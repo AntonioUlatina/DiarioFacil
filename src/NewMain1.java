@@ -37,6 +37,9 @@ public class NewMain1 {
         a.search(dF.getLstProductos(), "Lacteos");
         a.search(dF.getLstProductos(), "milk");
         a.search(dF.getLstProductos(), "Queso");
+        System.out.println(dF.getLstProductos());
+        System.out.println(a.dF.getLstProductos());
+       
         //System.out.println(a.getProducto());
         //System.out.println(a.search(a.getLstCategorias(), "Lacteos"));
         //System.out.println(a.getFoundObject());

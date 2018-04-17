@@ -215,7 +215,7 @@ protected <T> void delete(T... objectToDelete){//El metodo para eliminar un usua
     
     public Producto searchProduct(Collection<Producto> lstProductos, String toSearch) throws NullPointerException{
         for(Producto producto: lstProductos){
-            if(toSearch.equals((producto.getNombre()))){
+            if(toSearch.equalsIgnoreCase(producto.getNombre())){
                 return producto;
             }
         }
