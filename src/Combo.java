@@ -9,18 +9,18 @@ import java.util.List;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Mateo Marin
  */
-class Combo extends Item{
+class Combo extends Item {
 
     private Date diaPromocion;
     private Period periodoOferta;
     private int descuento;
     private int precioCombo;
     private String nombre;
+    private List<Producto> lstProductoss = new ArrayList<>();
 
     public String getNombre() {
         return nombre;
@@ -29,9 +29,20 @@ class Combo extends Item{
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
+    public List<Producto> getLstProductoss() {
+        return lstProductoss;
+    }
+
+    public void setLstProductoss(List<Producto> lstProductoss) {
+        this.lstProductoss = lstProductoss;
+    }
     
-    public Combo(){}
     
+
+    public Combo() {
+    }
+
     //este es un constructor con proposito de test solamente 
     public Combo(String nombre) {
         this.nombre = nombre;
@@ -45,8 +56,8 @@ class Combo extends Item{
         this.precioCombo = precioCombo;
         this.nombre = nombre;
     }
-    
-    public Combo(Date diaPromocion,Period periodoOferta, int descuento, int precioCombo){
+
+    public Combo(Date diaPromocion, Period periodoOferta, int descuento, int precioCombo) {
         this.diaPromocion = diaPromocion;
         this.periodoOferta = periodoOferta;
         this.descuento = descuento;
@@ -85,9 +96,18 @@ class Combo extends Item{
         this.precioCombo = precioCombo;
     }
 
+    public double Descuento() {
+        double montoPromo = 0.0;
+        for (Producto producto : this.lstProductoss) {
+            montoPromo = montoPromo + ((Producto) producto).getPrecio();
+        }
+        return montoPromo;
+
+    }
+
     @Override
     public String toString() {
         return "Combo{" + ", diaPromocion=" + diaPromocion + ", periodoOferta=" + periodoOferta + ", descuento=" + descuento + ", precioCombo=" + precioCombo + '}';
     }
-    
+
 }
