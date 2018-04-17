@@ -89,10 +89,8 @@ class Producto extends Item/*implements Searchable*/{
     public Producto searchProduct(Collection<Producto> lstProductos, String toSearch) throws NullPointerException{
         for(Producto producto: lstProductos){
             if(toSearch.equals((producto.getNombre()))){
-                System.out.println(toSearch + " se encuentra en la lista.");
-                break;
+                return producto;
             }
-        
         }
         return null;
     }

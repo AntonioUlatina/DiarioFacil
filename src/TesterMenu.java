@@ -216,10 +216,8 @@ public class TesterMenu {
                 String descripcion;
                 int precio;
                 out.println("Digite un nombre: \n");
-                leer.nextLine();
                 nombre = leer.nextLine();
                 out.println("Digite una descripcion: \n");
-                leer.nextLine();
                 descripcion = leer.nextLine();
                 out.println("Digite: \n");
                 leer.nextInt();
@@ -228,6 +226,21 @@ public class TesterMenu {
 
                 break;
             case 2:
+                Producto producto;
+                String campo;
+                String nuevoValor;
+                out.println("Digite el producto a modificar");
+                nombre = leer.nextLine();
+                producto = ((Administrador) adm).searchProduct(df.getLstProductos(), nombre);
+                if(((Administrador) adm).foundProducto(producto)){
+                    out.println("Digite el campo a cambiar: \n");
+                    campo = leer.nextLine();
+                    out.println("Digite el nuevo valor: \n");
+                    nuevoValor = leer.nextLine();
+                    ((Administrador) adm).modificarProducto(producto, campo, nuevoValor);
+                }else{
+                    mantenimientoProducto();
+                }
                 break;
 
             case 3:
@@ -346,33 +359,8 @@ Scanner leer = new Scanner(System.in);
 //************************************************
     
     
-    public static void mostrarMenuCliente() throws IOException {
-        out.println("Hola Cliente");
-        //out.println(df.getLstPromociones());
-        Scanner leer = new Scanner(System.in);
-        int cod;
-        out.println("1. Lista de Ordenes\n");
-        out.println("2. Carrito\n");
-        out.println("3. Lista Productos\n");
-        out.println("4. Cambio de contraseña\n");
-        out.println("5. Salir");
-        out.println("Digite la opcion: ");
-        cod = leer.nextInt();
-        switch (cod) {
-            case 1:
-
-                break;
-            case 2:
-
-                break;
-            case 3:
-
-                break;
-            case 4:
-                break;
-            case 5:
-                login();
-                break;
-        }
+    public static void mostrarMenuCliente() {
+        out.println("Hola cliente");
     }
+
 }
