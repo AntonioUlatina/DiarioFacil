@@ -30,6 +30,7 @@ class Promocion extends Item{
     private List<Item> lstItems = new ArrayList<>();
     private Date diaPromocion;
     private Period periodoOferta;
+    private int precioPromocion;
 
     private String nombre;
 
@@ -48,6 +49,12 @@ class Promocion extends Item{
         this.diaPromocion = diaPromocion;
         this.periodoOferta = periodoOferta;
     }
+
+    public Promocion(String nombre, int cantidad) {
+        super(cantidad);
+        this.nombre = nombre;
+    }
+    
 
     public List<Item> getLstItems() {
         return lstItems;
@@ -71,6 +78,20 @@ class Promocion extends Item{
 
     public void setPeriodoOferta(Period periodoOferta) {
         this.periodoOferta = periodoOferta;
+    }
+
+    public Promocion(int precioPromocion, String nombre, int cantidad) {
+        super(cantidad);
+        this.precioPromocion = precioPromocion;
+        this.nombre = nombre;
+    }
+
+    public int getPrecioPromocion() {
+        return precioPromocion;
+    }
+
+    public void setPrecioPromocion(int precioPromocion) {
+        this.precioPromocion = precioPromocion;
     }
     
     

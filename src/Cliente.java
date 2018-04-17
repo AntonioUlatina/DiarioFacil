@@ -41,11 +41,6 @@ public class Cliente extends Usuario {
         this.direccion = direccion;
     }
 
-    @Override
-    public String toString() {
-        return "Cliente{" + "direccion=" + direccion + ", lstOrdenes=" + lstOrdenes + '}';
-    }
-    
     public Cliente searchClient(Collection<Cliente> lstClientes, String toSearch) throws NullPointerException{
         for(Cliente cliente: lstClientes){
             if(toSearch.equals((cliente.getNombre()))){
