@@ -1,4 +1,5 @@
 import java.time.Instant;
+import java.time.Period;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
@@ -28,24 +29,39 @@ public final class Administrador extends Usuario implements Findable{
             case "producto":
                 if(!search(dF.getLstProductos(), nuevo)){
                     //(String nombre, String categoria, double precio, int stockMin)
-                dF.getLstProductos().add(new Producto((String) varArgs[0],(String) varArgs[1],(Double) varArgs[2], (Integer) varArgs[3]));
+                    dF.getLstProductos().add(new Producto((String) varArgs[0],(String) varArgs[1],(Double) varArgs[2], (Integer) varArgs[3]));
                 }else{
                     System.out.println("Este producto ya existe");
                 }
                 break;
             case "proveedor":
                 if(!search(dF.getLstProveedores(), nuevo)){
-                dF.getLstProveedores().add(new Proveedor((String) varArgs[0],(String) varArgs[1], (List<Producto>) varArgs[2]));
+                    dF.getLstProveedores().add(new Proveedor((String) varArgs[0],(String) varArgs[1], (List<Producto>) varArgs[2]));
                 }else{
                     System.out.println("Este proveedor ya existe");
                 }
                 break;
             case "pedido":
                 if(!search(dF.getLstPedidos(), nuevo)){
-                    
-                dF.getLstPedidos().add(new Pedido((String) varArgs[0], (Proveedor) varArgs[1], (List<Producto>) varArgs[2], Date.from(Instant.now())));
+                    dF.getLstPedidos().add(new Pedido((String) varArgs[0], (Proveedor) varArgs[1], (List<Producto>) varArgs[2], Date.from(Instant.now())));
                 }else{
                     System.out.println("Este pedido ya existe");
+                }
+                break;
+            case "promocion":
+                if(!search(dF.getLstPromociones(), nuevo)){
+                    //Promocion(Date diaPromocion, Period periodoOferta, String nombre, int cantidad)
+                    dF.getLstPromociones().add(new Promocion((Date) varArgs[0], (Period) varArgs[1], (String) varArgs[2], (Integer) varArgs[3]));
+                }else{
+                    System.out.println("Este proveedor ya existe");
+                }
+                break;
+            case "combo":
+                if(!search(dF.getLstCombos(), nuevo)){
+                    //Combo(Date diaPromocion, Period periodoOferta, int descuento, int precioCombo, String nombre, int cantidad)
+                    dF.getLstCombos().add(new Combo((Date) varArgs[0], (Period) varArgs[1], (Integer) varArgs[2], (Integer) varArgs[3], (String) varArgs[4], (Integer) varArgs[5]));
+                }else{
+                    System.out.println("Este proveedor ya existe");
                 }
                 break;
             default:
