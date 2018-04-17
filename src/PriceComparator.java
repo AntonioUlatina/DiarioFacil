@@ -11,7 +11,7 @@ import java.util.Comparator;
 public class PriceComparator implements Comparator<Producto>{
     
     @Override
-    public int compare(final Producto left, final Producto right){
+    public double compare(final Producto left, final Producto right){
         return -1 * Integer.compare(left.getPrecio(), right.getPrecio());
     }
 }

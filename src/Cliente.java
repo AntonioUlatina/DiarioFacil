@@ -16,12 +16,21 @@ import java.util.List;
 public class Cliente extends Usuario {
     private String direccion;
     private List<Orden> lstOrdenes;//El cliente tiene una lista de ordenes para poder ver sus ordenes antiguas
+    private int compras;
     private boolean foundCliente;
     public Cliente(){}
     
     public Cliente(String nombre,String contraseña,String cedula,String telefono,String direccion){
         super(nombre,contraseña,cedula,telefono);
         this.direccion = direccion;
+    }
+
+    public int getCompras() {
+        return compras;
+    }
+
+    public void setCompras(int compras) {
+        this.compras = compras;
     }
 
     public String getDireccion() {
@@ -38,7 +47,6 @@ public class Cliente extends Usuario {
     }
     
     public Cliente searchClient(Collection<Cliente> lstClientes, String toSearch) throws NullPointerException{
-        System.out.println("El queso " + this.foundCliente);
         for(Cliente cliente: lstClientes){
             if(toSearch.equals((cliente.getNombre()))){
                 this.foundCliente = true;
