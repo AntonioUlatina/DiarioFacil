@@ -234,8 +234,22 @@ protected <T> void delete(T... objectToDelete){//El metodo para eliminar un usua
         return lstObjects.contains(object);
     }
     
+    public Producto searchProduct(Collection<Producto> lstProductos, String toSearch) throws NullPointerException{
+        for(Producto producto: lstProductos){
+            if(toSearch.equals((producto.getNombre()))){
+                return producto;
+            }
+        }
+        return null;
+    }
+    
     @Override
     public <T> Boolean found(T objeto){
         return foundObject;
+    }
+
+    @Override
+    public Boolean foundProducto(Producto producto) {
+        return producto == null;
     }
 }
