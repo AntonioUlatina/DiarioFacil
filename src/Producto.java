@@ -15,14 +15,13 @@ class Producto extends Item/*implements Searchable*/{
     private String nombre;
     private String categoria;
     private double precio;
-    private int stockMin;
+    private static final int STOCKMIN = 5;
 
-    public Producto(String nombre, String categoria, double precio, int stockMin, int cantidad) {
+    public Producto(String nombre, String categoria, double precio, int cantidad) {
         super(cantidad);
         this.nombre = nombre;
         this.categoria = categoria;
         this.precio = precio;
-        this.stockMin = stockMin;
     }
     
     Producto (){}
@@ -32,11 +31,10 @@ class Producto extends Item/*implements Searchable*/{
         this.nombre = nombre;
     }
 
-    public Producto(String nombre, String categoria, double precio, int stockMin) {
+    public Producto(String nombre, String categoria, double precio) {
         this.nombre = nombre;
         this.categoria = categoria;
         this.precio = precio;
-        this.stockMin = stockMin;
     }
 
     public String getNombre() {
@@ -63,17 +61,13 @@ class Producto extends Item/*implements Searchable*/{
         this.precio = precio;
     }
 
-    public int getStockMin() {
-        return stockMin;
-    }
-
-    public void setStockMin(int stockMin) {
-        this.stockMin = stockMin;
+    public static int getSTOCKMIN() {
+        return STOCKMIN;
     }
 
     @Override
     public String toString() {
-        return "Producto{" + "nombre=" + nombre + ", categoria=" + categoria + ", precio=" + precio + ", stockMin=" + stockMin + '}';
+        return "Producto{" + "nombre=" + nombre + ", categoria=" + categoria + ", precio=" + precio + ", stockMin=" + STOCKMIN + '}';
     }
 
     
