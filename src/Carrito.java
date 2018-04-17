@@ -110,7 +110,7 @@ public class Carrito {
         return null;
     }
     
-    public void agregarACarrito(Collection<Item> diarioFacil, String toAdd){
+    public void agregarACarrito(Collection<Item> diarioFacil, String toAdd, int cantidad){
         Producto p;
         Promocion pr;
         Combo c;
@@ -118,15 +118,20 @@ public class Carrito {
             if(item instanceof Producto){
         p = searchProduct((Producto) item, toAdd);
         this.getLstItems().add(p);
+        p.reducirCantidad(cantidad);
         if(item instanceof Promocion){
         pr = searchPromocion((Promocion) item, toAdd);
         this.getLstItems().add(pr);
+        pr.reducirCantidad(cantidad);
         if(item instanceof Combo){
         c = searchCombo((Combo) item, toAdd);
         this.getLstItems().add(c);
+        c.reducirCantidad(cantidad);
     }
         }
 }
         }
     }
+    
+    
 }
