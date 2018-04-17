@@ -20,10 +20,10 @@ public class TesterMenu {
 //          CARGA INICIAL DE USUARIOS
 //************************************************
     static DiarioFacil dF = new DiarioFacil();
-    static Usuario cliente1 = new Cliente("Mateo Marin", "mateo123", "12345678", "12345679", "Heredia");
-    static Usuario cliente2 = new Cliente("Luis Fernandez", "luis123", "12345679", "9876543", "San Jose");
-    static Usuario cliente3 = new Cliente("Antonio Alvarez", "antonio123", "12345677", "9786545", "Alajuela");
-    static Usuario adm = new Administrador("Pedro Marin", "pedro123", "123445543", "342423");
+    static Usuario cliente1 = new Cliente("Mateo", "mateo123", "12345678", "12345679", "Heredia");
+    static Usuario cliente2 = new Cliente("Luis", "luis123", "12345679", "9876543", "San Jose");
+    static Usuario cliente3 = new Cliente("Antonio", "antonio123", "12345677", "9786545", "Alajuela");
+    static Usuario adm = new Administrador("Pedro", "pedro123", "123445543", "342423");
 //************************************************
 //          FIN DE CARGA USUARIOS
 //************************************************
@@ -156,15 +156,15 @@ public class TesterMenu {
                 }
                 break;
             case 3:
+                mostrarMenu();
                 break;
             default:
                 out.println("Valor no valido");
                 break;
         }
-        if(cod != 3){
-            mostrarMenu();
-        }
-        return login();
+
+        return true;
+        
     }
 
     public static void registro() throws IOException {
@@ -202,7 +202,7 @@ public class TesterMenu {
                 mantenimientoProveedores();
                 break;
             case 5:
-                  mantenimientoCombo();
+                mantenimientoCombo();
             case 6:
                 mantenimientoPromociones();
             case 7:
@@ -236,7 +236,7 @@ public class TesterMenu {
                 precio = leer.nextDouble();
                 out.println("Digite el stockMin: \n");
                 stockMin = leer.nextInt();
-                ((Administrador) adm).create("producto", nombre, categoria, precio,stockMin);
+                ((Administrador) adm).create("producto", nombre, categoria, precio, stockMin);
                 break;
             case 2:
                 Producto producto;
@@ -264,10 +264,10 @@ public class TesterMenu {
                 String nombreBorrar;
                 out.println("Digite el producto a borrar: ");
                 nombreBorrar = leer.next();
-                producto1 = ((Administrador)adm).searchProduct(dF.getLstProductos(), nombreBorrar);
-                if(producto1 != null){
-                    ((Administrador)adm).eliminarProducto(producto1);
-                }else{
+                producto1 = ((Administrador) adm).searchProduct(dF.getLstProductos(), nombreBorrar);
+                if (producto1 != null) {
+                    ((Administrador) adm).eliminarProducto(producto1);
+                } else {
                     mantenimientoProducto();
                 }
                 break;
@@ -282,7 +282,7 @@ public class TesterMenu {
         }
     }
 
-    public static void mantenimientoCategoria() throws IOException {
+    /*public static void mantenimientoCategoria() throws IOException {
         Scanner leer = new Scanner(System.in);
         int cod;
         out.println("1. Agregar Categoria\n");
@@ -315,11 +315,11 @@ public class TesterMenu {
         if (cod != 4) {
             mantenimientoProducto();
         }
-    }
-
+    }*/
     public static void mantenimientoClientes() throws IOException {
         Scanner leer = new Scanner(System.in);
         int cod;
+        out.println(((Administrador)adm).dF.getLstUsuarios());
         out.println("1. Modificar Cliente\n");
         out.println("2. Eliminar Cliente\n");
         out.println("3. Salir\n");
@@ -328,9 +328,38 @@ public class TesterMenu {
         switch (cod) {
 
             case 1:
+                Usuario cliente;
+                String campo;
+                String nuevoValor;
+                String nombre;
+                out.println("Digite el cliente a modificar: ");
+                nombre = leer.next();
+                cliente = ((Administrador) adm).searchUser(dF.getLstUsuarios(), nombre);
+                if (cliente != null) {
+                    out.println("Digite el campo a cambiar: \n");
+                    campo = leer.next();
+                    out.println("Digite el nuevo valor: \n");
+                    nuevoValor = leer.next();
+                    out.println(cliente);
+                    out.println(campo);
+                    out.println(nuevoValor);
+                    ((Administrador) adm).modificarCliente((Cliente) cliente, campo, nuevoValor);
+                }else{
+                    mantenimientoClientes();
+                }
                 break;
 
             case 2:
+                Usuario cliente1;
+                String nombreBorrar;
+                out.println("Digite el cliente a borrar: ");
+                nombreBorrar = leer.next();
+                cliente1 = ((Administrador) adm).searchCliente(dF.getLstUsuarios(), nombreBorrar);
+                if (cliente1 != null) {
+                    ((Administrador) adm).eliminarCliente((Cliente) cliente1);
+                } else {
+                    mantenimientoProducto();
+                }
                 break;
 
             case 3:

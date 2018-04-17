@@ -50,6 +50,12 @@ class Promocion extends Item{
         this.periodoOferta = periodoOferta;
     }
 
+    public Promocion(String nombre, int cantidad) {
+        super(cantidad);
+        this.nombre = nombre;
+    }
+    
+
     public List<Item> getLstItems() {
         return lstItems;
     }
