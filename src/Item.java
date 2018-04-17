@@ -14,8 +14,8 @@ import java.util.List;
  * @author Mateo Marin
  */
     abstract class Item {
-    private int cantidad;
-
+    protected static int cantidad;
+    
     public Item(int cantidad) {
         this.cantidad = cantidad;
     }
@@ -106,6 +106,10 @@ import java.util.List;
           sub = this.getCantidad() * (((Combo) this).getPrecioCombo()- ((Combo) this).getDescuento()* ((Combo) this).Descuento());  //creo que hay que hacer metodo descuento en combo
         }
         return sub;
+    }
+    
+    public void reducirCantidad(int cantidad){
+        this.setCantidad(this.getCantidad() - cantidad);
     }
     
     @Override
