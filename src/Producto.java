@@ -14,8 +14,15 @@ import java.util.Collection;
 class Producto extends Item/*implements Searchable*/{
     private String nombre;
     private String categoria;
+<<<<<<< HEAD
     private double precio;
     private int stockMin;
+=======
+    private int precio;
+    private int stockMin;
+    private int stockMax;
+    private boolean foundProducto;
+>>>>>>> 0f115afc92810845c39fa572092c5bfd2ad45f22
 
     public Producto(String nombre, String categoria, double precio, int stockMin, int cantidad) {
         super(cantidad);
@@ -24,7 +31,11 @@ class Producto extends Item/*implements Searchable*/{
         this.precio = precio;
         this.stockMin = stockMin;
     }
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 0f115afc92810845c39fa572092c5bfd2ad45f22
     
     Producto (){}
     

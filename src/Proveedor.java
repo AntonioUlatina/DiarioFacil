@@ -70,4 +70,17 @@ class Proveedor {
     }
         return null;
 }
+    
+        public void agregarProducto(Producto... productos){
+        for(Producto producto: productos){
+            if(!search(this.getLstProductos(),producto)){
+                this.getLstProductos().add (producto);
+            }else{
+                System.out.printf("El producto %s ya existe en la lista\n", producto.getNombre());}
+        }
+}
+
+    private <Generic> boolean search(List<Producto> lstProductos, Generic objeto) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
