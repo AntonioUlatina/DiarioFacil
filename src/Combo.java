@@ -37,8 +37,8 @@ class Combo extends Item{
         this.nombre = nombre;
     }
 
-    public Combo(Date diaPromocion, Period periodoOferta, int descuento, int precioCombo, String nombre, int numeroConsecutivo, int cantidad) {
-        super(numeroConsecutivo, cantidad);
+    public Combo(Date diaPromocion, Period periodoOferta, int descuento, int precioCombo, String nombre, int cantidad) {
+        super(cantidad);
         this.diaPromocion = diaPromocion;
         this.periodoOferta = periodoOferta;
         this.descuento = descuento;
