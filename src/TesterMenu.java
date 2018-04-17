@@ -156,11 +156,13 @@ public class TesterMenu {
                 }
                 break;
             case 3:
-                mostrarMenu();
                 break;
             default:
                 out.println("Valor no valido");
                 break;
+        }
+        if(cod != 3){
+            mostrarMenu();
         }
         return login();
     }
@@ -223,18 +225,6 @@ public class TesterMenu {
 
             case 1:
                 String nombre;
-<<<<<<< HEAD
-                String descripcion;
-                int precio;
-                out.println("Digite un nombre: \n");
-                nombre = leer.nextLine();
-                out.println("Digite una descripcion: \n");
-                descripcion = leer.nextLine();
-                out.println("Digite: \n");
-                leer.nextInt();
-                precio = leer.nextInt();
-                ((Administrador) adm).create("Producto", nombre, descripcion, precio);
-=======
                 String categoria;
                 int stockMin;
                 double precio;
@@ -247,17 +237,14 @@ public class TesterMenu {
                 out.println("Digite el stockMin: \n");
                 stockMin = leer.nextInt();
                 ((Administrador) adm).create("producto", nombre, categoria, precio,stockMin);
-
->>>>>>> f7ae4d8810f9d76d0c1222beec2c7b7a67abd207
                 break;
             case 2:
                 Producto producto;
                 String campo;
                 String nuevoValor;
-                String nombre1;
                 out.println("Digite el producto a modificar: ");
-                nombre1 = leer.next();
-                producto = ((Administrador) adm).searchProduct(dF.getLstProductos(), nombre1);
+                nombre = leer.next();
+                producto = ((Administrador) adm).searchProduct(dF.getLstProductos(), nombre);
                 if (producto != null) {
                     out.println("Digite el campo a cambiar: \n");
                     campo = leer.next();
@@ -278,7 +265,7 @@ public class TesterMenu {
                 out.println("Digite el producto a borrar: ");
                 nombreBorrar = leer.next();
                 producto1 = ((Administrador)adm).searchProduct(dF.getLstProductos(), nombreBorrar);
-                if(((Administrador) adm).foundProducto(producto1)){
+                if(producto1 != null){
                     ((Administrador)adm).eliminarProducto(producto1);
                 }else{
                     mantenimientoProducto();
