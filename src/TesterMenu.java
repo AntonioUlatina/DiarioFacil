@@ -33,7 +33,7 @@ public class TesterMenu {
 //          CARGA INICIAL DE PRODUCTOS
 //************************************************
     static Producto leche = new Producto("Leche", "Lacteos", 400, 5);
-    static Producto cerdo = new Producto("Carne de cerdo", "Carnes", 2000, 5);
+    static Producto cerdo = new Producto("Carne", "Carnes", 2000, 5);
     static Producto cerveza = new Producto("Cerveza", "Licores", 800, 5);
 //************************************************
 //************************************************
@@ -115,6 +115,7 @@ public class TesterMenu {
         dF.agregarProducto(leche);
         dF.agregarProducto(cerdo);
         dF.agregarProducto(cerveza);
+        dF.agregarProveedor(pro1);
         Scanner leer = new Scanner(System.in);
         int cod;
         out.println("1. Como administrador\n");
@@ -240,7 +241,7 @@ public class TesterMenu {
             case 2:
                 Producto producto;
                 String campo;
-                String nuevoValor;
+                double nuevoValor;
                 out.println("Digite el producto a modificar: ");
                 nombre = leer.next();
                 producto = ((Administrador) adm).searchProduct(dF.getLstProductos(), nombre);
@@ -248,7 +249,7 @@ public class TesterMenu {
                     out.println("Digite el campo a cambiar: \n");
                     campo = leer.next();
                     out.println("Digite el nuevo valor: \n");
-                    nuevoValor = leer.next();
+                    nuevoValor = leer.nextDouble();
                     out.println(producto);
                     out.println(campo);
                     out.println(nuevoValor);
@@ -388,11 +389,14 @@ public class TesterMenu {
             case 1:
                 String nombre;
                 String correo;
+                String producto;
                 out.println("Digite un nombre: ");
                 nombre = leer.next();
-                out.println("Digite una Categoria: \n");
+                out.println("Digite un correo: \n");
                 correo = leer.next();
-                ((Administrador) adm).create("proveedor", nombre, correo);
+                out.println("Digite un producto: ");
+                producto = leer.next();
+                ((Administrador) adm).create("proveedor", nombre, correo, producto);
                 break;
 
             case 2:
