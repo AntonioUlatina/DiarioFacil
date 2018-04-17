@@ -47,12 +47,8 @@ public class TesterMenu {
     public static void main(String[] args) throws IOException {
         // TODO code application logic here
         out.println("Diario Facil");
-<<<<<<< HEAD
         noSalir = true;
-=======
-        int opc;
-        boolean noSalir;
->>>>>>> 0f115afc92810845c39fa572092c5bfd2ad45f22
+
 
         do {
             mostrarMenu();
@@ -72,18 +68,14 @@ public class TesterMenu {
 
     public static int leerOpcion() throws java.io.IOException {
 
-        int opcion;
-
         out.print("Seleccione su opción: ");
-        opcion = Integer.parseInt(in.readLine());
         out.println();
-
-        return opcion;
+        return Integer.parseInt(in.readLine());
     }
 
     public static boolean ejecutarAccion(int popcion) throws java.io.IOException {
 
-        boolean noSalir = false;
+        //noSalir = false;  <==== no deberia estar aqui
         int numProd = 0;
 
         switch (popcion) {
