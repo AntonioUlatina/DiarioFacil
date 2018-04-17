@@ -89,7 +89,44 @@ public class Carrito {
         }
     }
     
+    public Producto searchProduct(Producto producto, String toSearch) throws NullPointerException{
+            if(toSearch.equalsIgnoreCase(producto.getNombre())){
+                return producto;
+            }
+        return null;
+    }
     
+    public Promocion searchPromocion(Promocion promocion, String toSearch) throws NullPointerException{
+            if(toSearch.equalsIgnoreCase(promocion.getNombre())){
+                return promocion;
+            }
+        return null;
+    }
     
-
+    public Combo searchCombo(Combo combo, String toSearch) throws NullPointerException{
+            if(toSearch.equalsIgnoreCase(combo.getNombre())){
+                return combo;
+            }
+        return null;
+    }
+    
+    public void agregarACarrito(Collection<Item> diarioFacil, String toAdd){
+        Producto p;
+        Promocion pr;
+        Combo c;
+        for(Item item: diarioFacil){
+            if(item instanceof Producto){
+        p = searchProduct((Producto) item, toAdd);
+        this.getLstItems().add(p);
+        if(item instanceof Promocion){
+        pr = searchPromocion((Promocion) item, toAdd);
+        this.getLstItems().add(pr);
+        if(item instanceof Combo){
+        c = searchCombo((Combo) item, toAdd);
+        this.getLstItems().add(c);
+    }
+        }
+}
+        }
+    }
 }
