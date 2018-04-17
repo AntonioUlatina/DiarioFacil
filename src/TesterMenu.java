@@ -19,7 +19,7 @@ public class TesterMenu {
 //************************************************
 //          CARGA INICIAL DE USUARIOS
 //************************************************
-    static DiarioFacil df = new DiarioFacil();
+    static DiarioFacil dF = new DiarioFacil();
     static Usuario cliente1 = new Cliente("Mateo Marin", "mateo123", "12345678", "12345679", "Heredia");
     static Usuario cliente2 = new Cliente("Luis Fernandez", "luis123", "12345679", "9876543", "San Jose");
     static Usuario cliente3 = new Cliente("Antonio Alvarez", "antonio123", "12345677", "9786545", "Alajuela");
@@ -107,13 +107,13 @@ public class TesterMenu {
     public static boolean login() throws IOException {
         //CARGA DE DATOS
 
-        df.agregarUsuario(cliente1);
-        df.agregarUsuario(cliente2);
-        df.agregarUsuario(cliente3);
-        df.agregarUsuario(adm);
-        df.agregarProducto(leche);
-        df.agregarProducto(cerdo);
-        df.agregarProducto(cerveza);
+        dF.agregarUsuario(cliente1);
+        dF.agregarUsuario(cliente2);
+        dF.agregarUsuario(cliente3);
+        dF.agregarUsuario(adm);
+        dF.agregarProducto(leche);
+        dF.agregarProducto(cerdo);
+        dF.agregarProducto(cerveza);
         Scanner leer = new Scanner(System.in);
         int cod;
         out.println("1. Como administrador\n");
@@ -127,7 +127,7 @@ public class TesterMenu {
                 String user = in.readLine();
                 out.println("Digite su pass: \n");
                 String pass = in.readLine();
-                for (Usuario usuario : df.getLstUsuarios()) {
+                for (Usuario usuario : dF.getLstUsuarios()) {
                     if (user.equals(usuario.getNombre()) && pass.equals(usuario.getContraseña())) {
                         if (usuario instanceof Administrador) {
                             mostrarMenuAdministrador();
@@ -144,7 +144,7 @@ public class TesterMenu {
                 String user1 = in.readLine();
                 out.println("Digite su contraseña: \n");
                 String pass1 = in.readLine();
-                for (Usuario usuario : df.getLstUsuarios()) {
+                for (Usuario usuario : dF.getLstUsuarios()) {
                     if (user1.equals(usuario.getNombre()) && pass1.equals(usuario.getContraseña())) {
                         if (usuario instanceof Cliente) {
                             mostrarMenuCliente();
@@ -212,7 +212,7 @@ public class TesterMenu {
     public static void mantenimientoProducto() throws IOException {
         Scanner leer = new Scanner(System.in);
         int cod;
-
+        out.println(dF.getLstProductos());
         out.println("1. Agregar Producto\n");
         out.println("2. Modificar Producto\n");
         out.println("3. Eliminar Producto\n");
@@ -223,16 +223,18 @@ public class TesterMenu {
 
             case 1:
                 String nombre;
-                String descripcion;
-                int precio;
-                out.println("Digite un nombre: \n");
-                nombre = leer.nextLine();
-                out.println("Digite una descripcion: \n");
-                descripcion = leer.nextLine();
-                out.println("Digite: \n");
-                leer.nextInt();
-                precio = leer.nextInt();
-                ((Administrador) adm).create("Producto", nombre, descripcion, precio);
+                String categoria;
+                int stockMin;
+                double precio;
+                out.println("Digite un nombre: ");
+                nombre = leer.next();
+                out.println("Digite una Categoria: \n");
+                categoria = leer.next();
+                out.println("Digite Precio: \n");
+                precio = leer.nextDouble();
+                out.println("Digite el stockMin: \n");
+                stockMin = leer.nextInt();
+                ((Administrador) adm).create("producto", nombre, categoria, precio,stockMin);
 
                 break;
             case 2:
@@ -241,7 +243,7 @@ public class TesterMenu {
                 String nuevoValor;
                 out.println("Digite el producto a modificar: ");
                 nombre = leer.nextLine();
-                producto = ((Administrador) adm).searchProduct(df.getLstProductos(), nombre);
+                producto = ((Administrador) adm).searchProduct(dF.getLstProductos(), nombre);
                 if (((Administrador) adm).foundProducto(producto)) {
                     out.println("Digite el campo a cambiar: \n");
                     campo = leer.nextLine();
@@ -258,12 +260,12 @@ public class TesterMenu {
                 String nombreBorrar;
                 out.println("Digite el producto a borrar: ");
                 nombreBorrar = leer.nextLine();
-                producto1 = ((Administrador)adm).searchProduct(df.getLstProductos(), nombreBorrar);
+                producto1 = ((Administrador)adm).searchProduct(dF.getLstProductos(), nombreBorrar);
                 if(((Administrador) adm).foundProducto(producto1)){
                     ((Administrador)adm).eliminarProducto(producto1);
+                }else{
+                    mantenimientoProducto();
                 }
-                
-                
                 break;
             case 4:
                 mostrarMenuAdministrador();
@@ -446,7 +448,7 @@ public class TesterMenu {
     public static void mostrarMenuCliente() throws IOException {
         out.println("Hola Cliente");
         //out.println(df.getLstPromociones());
-        out.println(df.getLstProductos());
+        out.println(dF.getLstProductos());
         Scanner leer = new Scanner(System.in);
         int cod;
         out.println("1. Lista de Ordenes\n");

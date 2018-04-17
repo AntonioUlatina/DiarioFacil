@@ -13,13 +13,13 @@ import java.util.List;
  * @author Mateo Marin
  */
 public class DiarioFacil {
-    private List<Producto> lstProductos;
-    private List<Promocion> lstPromociones;
-    private List<Combo> lstCombos;
-    private List<Orden> lstOrdenes;
-    private List<Usuario> lstUsuarios;
-    private List<Proveedor> lstProveedores;
-    private List<Pedido> lstPedidos;
+    private static List<Producto> lstProductos;
+    private static List<Promocion> lstPromociones;
+    private static List<Combo> lstCombos;
+    private static List<Orden> lstOrdenes;
+    private static List<Usuario> lstUsuarios;
+    private static List<Proveedor> lstProveedores;
+    private static List<Pedido> lstPedidos;
     
     {
     lstProductos = new ArrayList<>();
