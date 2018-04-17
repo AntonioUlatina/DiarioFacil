@@ -92,6 +92,22 @@ import java.util.List;
         }
 }*/
 
+     public double subTotalProducto() {
+         return this.getCantidad() * ((Producto) this).getPrecio();
+     }
+     
+    public double subTotal() {
+        double sub = 0;
+        if(this instanceof Producto){
+        sub = this.getCantidad() * ((Producto) this).getPrecio();
+        }if(this instanceof Promocion){
+            
+        }if(this instanceof Combo){
+            
+        }
+        return sub;
+    }
+    
     @Override
     public String toString() {
         return "Item{" + "cantidad=" + cantidad + '}';

@@ -155,8 +155,8 @@ public final class Administrador extends Usuario implements Findable{
                 producto.setCategoria((String) fieldValue); break;
             case "precio":
                 producto.setPrecio((Double) fieldValue); break;
-            case "stock minimo":
-                producto.setStockMin((Integer) fieldValue); break;
+            case "cantidad":
+                producto.setCantidad((Integer) fieldValue); break;
             default:
                 System.out.println("Please insert a valid field.");
         }
