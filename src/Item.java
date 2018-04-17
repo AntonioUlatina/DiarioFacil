@@ -101,9 +101,9 @@ import java.util.List;
         if(this instanceof Producto){
         sub = this.getCantidad() * ((Producto) this).getPrecio();
         }if(this instanceof Promocion){
-            
+         sub = this.getCantidad() * (((Promocion) this).getPrecioPromocion() - ((Promocion) this).getPrecioPromocion() * ((Promocion) this).Descuento());
         }if(this instanceof Combo){
-            
+          sub = this.getCantidad() * (((Combo) this).getPrecioCombo()- ((Combo) this).getDescuento()* ((Combo) this).Descuento());  //creo que hay que hacer metodo descuento en combo
         }
         return sub;
     }
