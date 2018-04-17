@@ -223,6 +223,18 @@ public class TesterMenu {
 
             case 1:
                 String nombre;
+<<<<<<< HEAD
+                String descripcion;
+                int precio;
+                out.println("Digite un nombre: \n");
+                nombre = leer.nextLine();
+                out.println("Digite una descripcion: \n");
+                descripcion = leer.nextLine();
+                out.println("Digite: \n");
+                leer.nextInt();
+                precio = leer.nextInt();
+                ((Administrador) adm).create("Producto", nombre, descripcion, precio);
+=======
                 String categoria;
                 int stockMin;
                 double precio;
@@ -236,6 +248,7 @@ public class TesterMenu {
                 stockMin = leer.nextInt();
                 ((Administrador) adm).create("producto", nombre, categoria, precio,stockMin);
 
+>>>>>>> f7ae4d8810f9d76d0c1222beec2c7b7a67abd207
                 break;
             case 2:
                 Producto producto;
