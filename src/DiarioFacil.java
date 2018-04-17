@@ -14,7 +14,6 @@ import java.util.List;
  */
 public class DiarioFacil {
     private List<Producto> lstProductos;
-    private List<Categoria> lstCategorias;
     private List<Promocion> lstPromociones;
     private List<Combo> lstCombos;
     private List<Orden> lstOrdenes;
@@ -24,7 +23,6 @@ public class DiarioFacil {
     
     {
     lstProductos = new ArrayList<>();
-    lstCategorias = new ArrayList<>();
     lstPromociones = new ArrayList<>();
     lstCombos = new ArrayList<>();
     lstOrdenes = new ArrayList<>();
@@ -37,10 +35,6 @@ public class DiarioFacil {
     
     public void agregarProducto(Producto producto) {
         this.lstProductos.add(producto);
-    }
-    
-    public void agregarCategoria(Categoria categoria) {
-        this.lstCategorias.add(categoria);
     }
     
     public void agregarPromocion (Promocion promocion){
@@ -71,14 +65,6 @@ public class DiarioFacil {
 
     public void setLstProductos(List<Producto> lstProductos) {
         this.lstProductos = lstProductos;
-    }
-
-    public List<Categoria> getLstCategorias() {
-        return lstCategorias;
-    }
-
-    public void setLstCategorias(List<Categoria> lstCategorias) {
-        this.lstCategorias = lstCategorias;
     }
 
     public List<Promocion> getLstPromociones() {
@@ -135,7 +121,7 @@ public class DiarioFacil {
         for (Usuario lstUsuario : lstUsuarios) {
             todos.concat(lstUsuario.getNombre());
         }
-        return "DiarioFacil{" + "lstProductos=" + lstProductos + ", lstCategorias=" + lstCategorias + ", lstPromociones=" + lstPromociones + ", lstCombos=" + lstCombos + ", lstOrdenes=" + lstOrdenes + ", lstUsuarios=" + lstUsuarios + ", lstProveedores=" + lstProveedores + ", lstPedidos=" + lstPedidos + '}';
+        return "DiarioFacil{" + "lstProductos=" + lstProductos + ", lstPromociones=" + lstPromociones + ", lstCombos=" + lstCombos + ", lstOrdenes=" + lstOrdenes + ", lstUsuarios=" + lstUsuarios + ", lstProveedores=" + lstProveedores + ", lstPedidos=" + lstPedidos + '}';
     }
     
 

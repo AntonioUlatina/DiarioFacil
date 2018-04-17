@@ -7,7 +7,7 @@ import java.util.List;
  *
  * @author Mateo Marin
  */
-public final class Administrador extends Usuario implements Searchable, Findable{
+public final class Administrador extends Usuario implements Findable{
     public DiarioFacil dF;
     private boolean foundObject;
 
@@ -33,13 +33,6 @@ public final class Administrador extends Usuario implements Searchable, Findable
                     System.out.println("Este producto ya existe");
                 }
                 break;
-            case "categoria":
-                if(!search(dF.getLstCategorias(), nuevo)){
-                dF.getLstCategorias().add(new Categoria((String) varArgs[0], (List<Producto>) varArgs[1]));
-                }else{
-                    System.out.println("Esta categoria ya existe");
-                }
-                break;
             case "proveedor":
                 if(!search(dF.getLstProveedores(), nuevo)){
                 dF.getLstProveedores().add(new Proveedor((String) varArgs[0],(String) varArgs[1], (List<Producto>) varArgs[2]));
@@ -58,7 +51,6 @@ public final class Administrador extends Usuario implements Searchable, Findable
             default:
                 System.out.println(nuevo + " is not a valid option; please insert a valid option");
         }
-        Collections.sort(dF.getLstProductos(), new PriceComparator());
     }
 
 //Might be unnecesary but I'd like to keep it, to understand the interaction between this method and create.
@@ -86,10 +78,6 @@ public final class Administrador extends Usuario implements Searchable, Findable
                 dF.getLstProductos().add((Producto) objeto);
             }else if(objeto instanceof Producto && search(dF.getLstProductos(),objeto)){
                 System.out.printf("El producto %s ya existe en la lista\n", ((Producto) objeto).getNombre());}
-            if(objeto instanceof Categoria && !search(dF.getLstCategorias(),objeto)){
-                dF.getLstCategorias().add((Categoria) objeto);
-            }else if(objeto instanceof Producto && search(dF.getLstCategorias(),objeto)){
-                System.out.printf("La categoria %s ya existe en la lista\n", ((Categoria) objeto).getNombre());}
             if(objeto instanceof Proveedor && !search(dF.getLstProveedores(),objeto)){
                 dF.getLstProveedores().add((Proveedor) objeto);
             }else if(objeto instanceof Producto && search(dF.getLstProveedores(),objeto)){
@@ -109,11 +97,6 @@ public final class Administrador extends Usuario implements Searchable, Findable
                     dF.getLstProductos().add((Producto) objeto[i]);
                 }else{
                     System.out.printf("El producto %s ya existe en la lista\n", ((Producto) objeto[i]).getNombre());
-            }}if(objeto[i] instanceof Categoria){
-                if(search(dF.getLstCategorias(),objeto[i])){
-                    dF.getLstCategorias().add((Categoria) objeto[i]);
-                }else{
-                    System.out.printf("La categoria %s ya existe en la lista\n", ((Categoria) objeto[i]).getNombre());
             }}if(objeto[i] instanceof Proveedor){
                 if(search(dF.getLstProveedores(),objeto[i])){
                     dF.getLstProveedores().add((Proveedor) objeto[i]);
@@ -162,19 +145,6 @@ public final class Administrador extends Usuario implements Searchable, Findable
                 System.out.println("Please insert a valid field.");
         }
     }
-    
-    public <T> void modificarCategoria(Categoria categoria, String field, T fieldValue){//El metodo para modificar una categoria
-        switch(field){
-            case "nombre":
-                categoria.setNombre((String) fieldValue);
-                break;
-            case "productos":
-                categoria.setLstProductos((List<Producto>) fieldValue);
-                break;
-            default:
-                System.out.println("Please insert a valid field.");
-        }
-    }
    
     public <T> void modificarProveedor(Proveedor proveedor, String field, T fieldValue){//El metodo para modificar un proveedor
         switch(field){
@@ -203,13 +173,6 @@ public final class Administrador extends Usuario implements Searchable, Findable
             System.out.printf("Este %s no existe en el inventario\n", producto.getNombre());
     }
     
-    public void eliminarCategoria(Categoria categoria){//El metodo para eliminar una categoria
-        if(search(dF.getLstCategorias(), categoria))
-            dF.getLstCategorias().remove(categoria);
-        else
-            System.out.printf("Esta %s no existe en el sistema\n", categoria.getNombre());
-   }
-
     public void eliminarProveedor(Proveedor proveedor){//El metodo para eliminar un proveedor
         if(search(dF.getLstProveedores(), proveedor))
             dF.getLstProveedores().remove(proveedor);

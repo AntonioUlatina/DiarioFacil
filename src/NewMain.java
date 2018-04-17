@@ -26,18 +26,18 @@ public class NewMain {
         Producto p1 = new Producto();
         Producto p2 = new Producto();
         Producto p3 = new Producto();
-        Categoria c = new Categoria("wines", a.getLstProductos());
+        Categoria c = new Categoria("wines", a.dF.getLstProductos());
         //a.addObjects(p1, p2, p3, c);
         a.create("producto", "Queso", "Galleta", 3);
         a.create("producto", "milk", "lacteo", 10);
-        a.create("categoria", "Lacteos", a.getLstProductos());
-        for(Producto p: a.getLstProductos()){
+        a.create("categoria", "Lacteos", a.dF.getLstProductos());
+        for(Producto p: a.dF.getLstProductos()){
             System.out.println(p);
-            System.out.println(a.getLstCategorias());
+            System.out.println(a.dF.getLstCategorias());
         }
         a.addObjects(p1,p2,p3);
         //System.out.println(a.search(a.getLstProductos(), "Queso"));
-        System.out.println(a.getLstProductos());
+        System.out.println(a.dF.getLstProductos());
         //a.delete(a.getLstProductos().get(0));
         //System.out.println(a.getLstProductos());
         //a.delete(a.getLstProductos().get(0),a.getLstCategorias().get(0));
