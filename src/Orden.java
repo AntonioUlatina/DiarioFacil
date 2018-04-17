@@ -95,4 +95,30 @@ class Orden {
     }
         return null;
 }
+    
+  public String toString() {
+        StringBuffer sb = new StringBuffer(); //El StringBuffer funciona para concatenar las cosas para imprimirlas en ves del to string
+        sb.append("Nombre: " + this.getCliente().getNombre() + "\t\t" + "No.Orden: " + this.getOrderID() + "\n");
+        sb.append("Telefono: " + this.getCliente().getTelefono() + "\t");
+        sb.append("Direccion: " + this.getCliente().getDireccion() + "\n");
+        sb.append("================================================================================================\n");
+        /* sb.append("Consecutivo\tCantidad\tDescripcion\tP/U\tDescuento\tSubTotal\n");
+        sb.append("================================================================================================\n");
+        int consecutivo = 1;
+        for (Item item : this.lstItem) {
+            String valorDescuento = (item.getProducto().ponerDescuento()* 100) + "%";
+            sb.append(consecutivo++ + "\t\t" + item.getCantPro()+ "\t\t" + item.getProducto().getNombreProduc()+ "\t\t" + item.getProducto().getPrecio() + "\t" + valorDescuento + "\t\t" + item.subTotal() + "\n");//Asi se revisa por lista       
+        }
+        double montoTotal = this.getMontoTotal();
+        sb.append("================================================================================================\n");
+        sb.append("\t\t\t\t\t\t\t\tTOTAL:  " + montoTotal + "\n");
+        sb.append("================================================================================================\n");*/
+        return null;
+    }  
+    
+    
+    
+    
+    
+    
 }
