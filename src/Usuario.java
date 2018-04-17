@@ -74,9 +74,9 @@ public abstract class Usuario {
         return "Usuario{" + "nombre=" + nombre + ", contrase\u00f1a=" + contraseña + ", cedula=" + cedula + ", telefono=" + telefono + '}';
     }
     
-    public Usuario searchUser(Collection<Usuario> lstProductos, String toSearch) throws NullPointerException{
+    public Usuario searchUser(Collection<Usuario> lstUsuarios, String toSearch) throws NullPointerException{
 
-        for(Usuario user: lstProductos){
+        for(Usuario user: lstUsuarios){
             if(toSearch.equals((user.getNombre()))){
                 this.foundUser = true;
                 System.out.println(toSearch + " se encuentra en la lista.");

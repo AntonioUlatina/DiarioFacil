@@ -26,6 +26,13 @@ class Proveedor {
         this.lstProductos = lstProductos;
     }
 
+    public Proveedor(String nombre, String email) {
+        this.nombre = nombre;
+        this.email = email;
+    }
+    
+    
+
     public String getNombre() {
         return nombre;
     }

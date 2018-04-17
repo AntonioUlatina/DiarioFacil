@@ -24,6 +24,7 @@ public class TesterMenu {
     static Usuario cliente2 = new Cliente("Luis", "luis123", "12345679", "9876543", "San Jose");
     static Usuario cliente3 = new Cliente("Antonio", "antonio123", "12345677", "9786545", "Alajuela");
     static Usuario adm = new Administrador("Pedro", "pedro123", "123445543", "342423");
+    static Proveedor pro1 = new Proveedor("Carlos", "colomasayuja2@gmail.com");
 //************************************************
 //          FIN DE CARGA USUARIOS
 //************************************************
@@ -162,7 +163,9 @@ public class TesterMenu {
                 out.println("Valor no valido");
                 break;
         }
-
+        if (cod != 3) {
+            mostrarMenu();
+        }
         return true;
         
     }
@@ -180,12 +183,11 @@ public class TesterMenu {
         Scanner leer = new Scanner(System.in);
         int cod;
         out.println("1. Mantenimiento Producto\n");
-        out.println("2. Mantenimiento Categoria\n");
-        out.println("3. Mantenimiento Clientes\n");
-        out.println("4. Mantenimiento de Proveedores\n");
-        out.println("5. Mantenimiento Combo\n");
-        out.println("6. Mantenimiento Promociones\n");
-        out.println("7. Salir");
+        out.println("2. Mantenimiento Clientes\n");
+        out.println("3. Mantenimiento de Proveedores\n");
+        out.println("4. Mantenimiento Combo\n");
+        out.println("5. Mantenimiento Promociones\n");
+        out.println("6. Salir");
         out.println("Digite la opcion: ");
         cod = leer.nextInt();
         switch (cod) {
@@ -193,19 +195,16 @@ public class TesterMenu {
                 mantenimientoProducto();
                 break;
             case 2:
-                mantenimientoCategoria();
-                break;
-            case 3:
                 mantenimientoClientes();
                 break;
-            case 4:
+            case 3:
                 mantenimientoProveedores();
                 break;
-            case 5:
+            case 4:
                 mantenimientoCombo();
-            case 6:
+            case 5:
                 mantenimientoPromociones();
-            case 7:
+            case 6:
                 login();
                 break;
         }
@@ -374,6 +373,7 @@ public class TesterMenu {
     }
 
     public static void mantenimientoProveedores() throws IOException {
+        out.println(((Administrador)adm).dF.getLstProveedores());
         Scanner leer = new Scanner(System.in);
         int cod;
         out.println("1. Agregar Proveedor\n");
@@ -386,6 +386,13 @@ public class TesterMenu {
         switch (cod) {
 
             case 1:
+                String nombre;
+                String correo;
+                out.println("Digite un nombre: ");
+                nombre = leer.next();
+                out.println("Digite una Categoria: \n");
+                correo = leer.next();
+                ((Administrador) adm).create("proveedor", nombre, correo);
                 break;
 
             case 2:
