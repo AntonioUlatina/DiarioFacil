@@ -180,12 +180,11 @@ public class TesterMenu {
         Scanner leer = new Scanner(System.in);
         int cod;
         out.println("1. Mantenimiento Producto\n");
-        out.println("2. Mantenimiento Categoria\n");
-        out.println("3. Mantenimiento Clientes\n");
-        out.println("4. Mantenimiento de Proveedores\n");
-        out.println("5. Mantenimiento Combo\n");
-        out.println("6. Mantenimiento Promociones\n");
-        out.println("7. Salir");
+        out.println("2. Mantenimiento Clientes\n");
+        out.println("3. Mantenimiento de Proveedores\n");
+        out.println("4. Mantenimiento Combo\n");
+        out.println("5. Mantenimiento Promociones\n");
+        out.println("6. Salir");
         out.println("Digite la opcion: ");
         cod = leer.nextInt();
         switch (cod) {
@@ -193,19 +192,16 @@ public class TesterMenu {
                 mantenimientoProducto();
                 break;
             case 2:
-                mantenimientoCategoria();
-                break;
-            case 3:
                 mantenimientoClientes();
                 break;
-            case 4:
+            case 3:
                 mantenimientoProveedores();
                 break;
-            case 5:
+            case 4:
                 mantenimientoCombo();
-            case 6:
+            case 5:
                 mantenimientoPromociones();
-            case 7:
+            case 6:
                 login();
                 break;
         }
