@@ -66,6 +66,13 @@ public final class Administrador extends Usuario implements Findable{
                     System.out.println("Este proveedor ya existe");
                 }
                 break;
+            case "cliente":
+                 if(!search(dF.getLstUsuarios(), nuevo)){
+                    //(String nombre, String categoria, double precio, int stockMin)
+                    dF.getLstUsuarios().add(new Cliente((String) varArgs[0],(String) varArgs[1],(String) varArgs[2], (String) varArgs[3], (String) varArgs[4]));
+                }else{
+                    System.out.println("Este cliente ya existe");
+                }
             default:
                 System.out.println(nuevo + " is not a valid option; please insert a valid option");
         }

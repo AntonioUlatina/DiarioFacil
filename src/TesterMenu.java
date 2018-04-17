@@ -172,8 +172,24 @@ public class TesterMenu {
     }
 
     public static void registro() throws IOException {
-        out.println("Digite un nombre : ");
-
+        Scanner leer = new Scanner(System.in);
+        String nombre;
+        String contraseña;
+        String cedula;
+        String telefono;
+        String direccion;
+        out.println("Digite su nombre de usuario: ");
+        nombre = leer.next();
+        out.println("Digite su contraseña: ");
+        contraseña = leer.next();
+        out.println("Digite su cedula: ");
+        cedula = leer.next();
+        out.println("Digite su telefono: ");
+        telefono = leer.next();
+        out.println("Digite su direccion: ");
+        direccion = leer.next();
+        ((Administrador) adm).create("cliente", nombre, contraseña, cedula, telefono,direccion);
+        login();
     }
 //************************************************
 //          INICIA FLUJO DE MENU ADMINISTRADOR
