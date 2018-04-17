@@ -223,7 +223,6 @@ public class TesterMenu {
                 leer.nextInt();
                 precio = leer.nextInt();
                 ((Administrador) adm).create("Producto", nombre, descripcion, precio);
-
                 break;
             case 2:
                 Producto producto;
