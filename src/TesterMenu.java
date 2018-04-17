@@ -346,8 +346,33 @@ Scanner leer = new Scanner(System.in);
 //************************************************
     
     
-    public static void mostrarMenuCliente() {
-        out.println("Hola cliente");
-    }
+    public static void mostrarMenuCliente() throws IOException {
+        out.println("Hola Cliente");
+        //out.println(df.getLstPromociones());
+        Scanner leer = new Scanner(System.in);
+        int cod;
+        out.println("1. Lista de Ordenes\n");
+        out.println("2. Carrito\n");
+        out.println("3. Lista Productos\n");
+        out.println("4. Cambio de contraseña\n");
+        out.println("5. Salir");
+        out.println("Digite la opcion: ");
+        cod = leer.nextInt();
+        switch (cod) {
+            case 1:
 
+                break;
+            case 2:
+
+                break;
+            case 3:
+
+                break;
+            case 4:
+                break;
+            case 5:
+                login();
+                break;
+        }
+    }
 }
