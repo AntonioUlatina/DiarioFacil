@@ -241,14 +241,18 @@ public class TesterMenu {
                 Producto producto;
                 String campo;
                 String nuevoValor;
+                String nombre1;
                 out.println("Digite el producto a modificar: ");
-                nombre = leer.nextLine();
-                producto = ((Administrador) adm).searchProduct(dF.getLstProductos(), nombre);
-                if (((Administrador) adm).foundProducto(producto)) {
+                nombre1 = leer.next();
+                producto = ((Administrador) adm).searchProduct(dF.getLstProductos(), nombre1);
+                if (producto != null) {
                     out.println("Digite el campo a cambiar: \n");
-                    campo = leer.nextLine();
+                    campo = leer.next();
                     out.println("Digite el nuevo valor: \n");
-                    nuevoValor = leer.nextLine();
+                    nuevoValor = leer.next();
+                    out.println(producto);
+                    out.println(campo);
+                    out.println(nuevoValor);
                     ((Administrador) adm).modificarProducto(producto, campo, nuevoValor);
                 } else {
                     mantenimientoProducto();
@@ -259,7 +263,7 @@ public class TesterMenu {
                 Producto producto1;
                 String nombreBorrar;
                 out.println("Digite el producto a borrar: ");
-                nombreBorrar = leer.nextLine();
+                nombreBorrar = leer.next();
                 producto1 = ((Administrador)adm).searchProduct(dF.getLstProductos(), nombreBorrar);
                 if(((Administrador) adm).foundProducto(producto1)){
                     ((Administrador)adm).eliminarProducto(producto1);
