@@ -28,19 +28,18 @@ public class TesterMenu {
 
     static BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
     static PrintStream out = System.out;	// variables objetos in y out para
-
+    static int opc;
+    static boolean noSalir;
     /**
      * @param args the command line arguments
      * @throws java.io.IOException
      */
-    public static boolean noSalir = true;
-
+    
+    
     public static void main(String[] args) throws IOException {
         // TODO code application logic here
         out.println("Diario Facil");
-        int opc;
-
-        boolean noSalir;
+        noSalir = true;
 
         do {
             mostrarMenu();

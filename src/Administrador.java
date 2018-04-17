@@ -27,7 +27,8 @@ public final class Administrador extends Usuario implements Searchable, Findable
         switch (nuevo){
             case "producto":
                 if(!search(dF.getLstProductos(), nuevo)){
-                dF.getLstProductos().add(new Producto((String) varArgs[0],(String) varArgs[1],(Integer) varArgs[2],(String) varArgs[3]));
+                    //(String nombre, String categoria, double precio, int stockMin)
+                dF.getLstProductos().add(new Producto((String) varArgs[0],(String) varArgs[1],(Double) varArgs[2], (Integer) varArgs[3]));
                 }else{
                     System.out.println("Este producto ya existe");
                 }
@@ -150,14 +151,13 @@ public final class Administrador extends Usuario implements Searchable, Findable
     public <T> void modificarProducto(Producto producto, String field, T fieldValue){//El metodo para modificar un producto
         switch(field){
             case "nombre":
-                producto.setNombre((String) fieldValue);
-                break;
-            case "descripcion":
-                producto.setDescripcion((String) fieldValue);
-                break;
+                producto.setNombre((String) fieldValue); break;
+            case "categoria":
+                producto.setCategoria((String) fieldValue); break;
             case "precio":
-                producto.setPrecio((Integer) fieldValue);
-                break;
+                producto.setPrecio((Double) fieldValue); break;
+            case "stock minimo":
+                producto.setStockMin((Integer) fieldValue); break;
             default:
                 System.out.println("Please insert a valid field.");
         }

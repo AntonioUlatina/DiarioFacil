@@ -13,21 +13,18 @@ import java.util.Collection;
  */
 class Producto extends Item/*implements Searchable*/{
     private String nombre;
-    private String descripcion;
     private String categoria;
+    private double precio;
+    private int stockMin;
 
-    public Producto(String nombre, String descripcion, String categoria, int precio, int stockMin, int numeroConsecutivo, int cantidad) {
-        super(numeroConsecutivo, cantidad);
+    public Producto(String nombre, String categoria, double precio, int stockMin, int cantidad) {
+        super(cantidad);
         this.nombre = nombre;
-        this.descripcion = descripcion;
         this.categoria = categoria;
         this.precio = precio;
         this.stockMin = stockMin;
     }
-    private int precio;
-    private int stockMin;
-    private int stockMax;
-    private boolean foundProducto;
+    
     
     Producto (){}
     
@@ -36,34 +33,34 @@ class Producto extends Item/*implements Searchable*/{
         this.nombre = nombre;
     }
 
-    public Producto(String nombre, String descripcion, Integer precio, String categoria) {
+    public Producto(String nombre, String categoria, double precio, int stockMin) {
         this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.precio = precio;
         this.categoria = categoria;
+        this.precio = precio;
+        this.stockMin = stockMin;
     }
 
     public String getNombre() {
         return nombre;
     }
 
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
-    public int getPrecio() {
+    public double getPrecio() {
         return precio;
     }
 
-    public void setPrecio(int precio) {
+    public void setPrecio(double precio) {
         this.precio = precio;
     }
 
@@ -75,18 +72,11 @@ class Producto extends Item/*implements Searchable*/{
         this.stockMin = stockMin;
     }
 
-    public int getStockMax() {
-        return stockMax;
-    }
-
-    public void setStockMax(int stockMax) {
-        this.stockMax = stockMax;
-    }
-
     @Override
     public String toString() {
-        return "Producto{" + "nombre=" + nombre + ", descripcion=" + descripcion + ", precio=" + precio + ", stockMin=" + stockMin + ", stockMax=" + stockMax + '}';
+        return "Producto{" + "nombre=" + nombre + ", categoria=" + categoria + ", precio=" + precio + ", stockMin=" + stockMin + '}';
     }
+
     
     //@Override
     public Producto search(Collection<Producto> lstObjects, String toSearch) throws NullPointerException{
@@ -98,18 +88,13 @@ class Producto extends Item/*implements Searchable*/{
     }
     
     public Producto searchProduct(Collection<Producto> lstProductos, String toSearch) throws NullPointerException{
-        System.out.println("El queso " + this.foundProducto);
         for(Producto producto: lstProductos){
             if(toSearch.equals((producto.getNombre()))){
-                this.foundProducto = true;
                 System.out.println(toSearch + " se encuentra en la lista.");
                 break;
             }
         
-        if(!this.foundProducto){
-            System.out.println(toSearch + " no esta en la lista");
         }
-    }
         return null;
-}
+    }
 }

@@ -14,46 +14,14 @@ import java.util.List;
  * @author Mateo Marin
  */
     abstract class Item {
-    private int numeroConsecutivo;
     private int cantidad;
 
-    //private Producto producto;
-    //private Combo combo;
-    public Item(int numeroConsecutivo, int cantidad) {
-        this.numeroConsecutivo = numeroConsecutivo;
+    public Item(int cantidad) {
         this.cantidad = cantidad;
     }
-    //private Promocion promocion;
-    private boolean foundProducto;
-    private boolean foundCombo;
-    private boolean foundPromocion;
     
     public Item(){}
     
-    public boolean isFoundCombo() {
-        return foundCombo;
-    }
-
-    public void setFoundCombo(boolean foundCombo) {
-        this.foundCombo = foundCombo;
-    }
-
-    public boolean isFoundPromocion() {
-        return foundPromocion;
-    }
-
-    public void setFoundPromocion(boolean foundPromocion) {
-        this.foundPromocion = foundPromocion;
-    }
-
-    public int getNumeroConsecutivo() {
-        return numeroConsecutivo;
-    }
-
-    public void setNumeroConsecutivo(int numeroConsecutivo) {
-        this.numeroConsecutivo = numeroConsecutivo;
-    }
-
     public int getCantidad() {
         return cantidad;
     }
@@ -62,10 +30,6 @@ import java.util.List;
         this.cantidad = cantidad;
     }
 
-    @Override
-    public String toString() {
-        return "Item{" + "numeroConsecutivo=" + numeroConsecutivo + ", cantidad=" + cantidad + '}';
-    }
    
     /*
     public Producto searchProduct(Collection<Producto> lstProductos, String toSearch) throws NullPointerException{
@@ -127,4 +91,9 @@ import java.util.List;
             this.foundPromocion = false;
         }
 }*/
+
+    @Override
+    public String toString() {
+        return "Item{" + "cantidad=" + cantidad + '}';
+    }
 }
